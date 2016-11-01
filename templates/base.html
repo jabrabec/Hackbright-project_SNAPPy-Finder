@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <title>{% block title %}EBT/SNAP Database{% endblock %} </title>
+  <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+  EBT/SNAP Finder
+  <hr>
+
+  {% block content %} put your content here {% endblock %}
+
+</body>
+</html>

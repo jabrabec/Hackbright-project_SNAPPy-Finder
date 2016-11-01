@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>EBT/SNAP Finder</h1>
+
+<div>
+    <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=94109&key={{ key }}" allowfullscreen></iframe>
+</div>
+
+<div id="location-box">
+    some stuff
+</div>
+
+<script>
+    var x = document.getElementById("#location-box");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude + 
+        "<br>Longitude: " + position.coords.longitude; 
+    }
+</script>
+
+{% endblock %}
