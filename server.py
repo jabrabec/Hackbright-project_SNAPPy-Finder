@@ -40,6 +40,46 @@ def search_retailers_by_coords():
     search_range = float(request.args.get("search-range"))
     print "\nsearch range: ", search_range
 
+    retailers_list = sql_query_by_coords(latitude, longitude, search_range)
+
+    return render_template('search_results.html', retailers_list=retailers_list,
+                           latitude=latitude, longitude=longitude, search_range=search_range)
+
+
+@app.route('/search-address', methods=['GET'])
+def search_retailers_by_addr():
+    """Search DB for a list of results given an address by user."""
+
+    search_range = float(request.args.get("search-range"))
+    print "\nsearch range: ", search_range
+
+    address_list = []
+    address_list.append(request.args.get("street"))
+    address_list.append(request.args.get("city"))
+    address_list.append(request.args.get("state"))
+    print address_list
+
+    geocode_string = ", ".join(address_list)
+    print geocode_string
+
+    gmaps = googlemaps.Client(key=os.environ['GMAPS_API_KEY'])
+    geocode_result = gmaps.geocode(geocode_string)
+    print geocode_result
+
+    latitude = geocode_result[0].get('geometry').get('location').get('lat')
+    print "\nlatitude: ", latitude
+    longitude = geocode_result[0].get('geometry').get('location').get('lng')
+    print "\nlongitude: ", longitude
+
+    retailers_list = sql_query_by_coords(latitude, longitude, search_range)
+
+    return render_template('search_results.html', retailers_list=retailers_list,
+                           latitude=latitude, longitude=longitude, search_range=search_range)
+
+
+def sql_query_by_coords(latitude, longitude, search_range):
+    """Helper function used by both search routes to query database"""
+
     # Haversine equation
     sql_query = """SELECT name, (
         3959*acos(cos(radians(:latitude))*cos(radians(lat))*cos(radians(
@@ -55,41 +95,9 @@ def search_retailers_by_coords():
         'latitude': latitude,
         'longitude': longitude,
         'search_range': search_range})
-    retailers_list = cursor.fetchall()
-    print retailers_list
-
-    return render_template('search_results.html', retailers_list=retailers_list,
-                           latitude=latitude, longitude=longitude, search_range=search_range)
-
-
-@app.route('/search-address', methods=['GET'])
-def search_retailers_by_addr():
-    """Search DB for a list of results given address by user."""
-
-    search_range = float(request.args.get("search-range"))
-    print "\nsearch range: ", search_range
-    # input_address = request.args.get("street")
-    # input_city = request.args.get("city")
-    # input_state = request.args.get("state")
-    address_list = []
-    address_list.append(request.args.get("street"))
-    address_list.append(request.args.get("city"))
-    address_list.append(request.args.get("state"))
-    print address_list
-    geocode_string = ", ".join(address_list)
-    print geocode_string
-
-    gmaps = googlemaps.Client(key=os.environ['GMAPS_API_KEY'])
-    geocode_result = gmaps.geocode(geocode_string)
-    print geocode_result
-
-    return """
-    <html>
-      <body>
-        geocode conversion complete
-      </body>
-    </html>
-    """
+    results = cursor.fetchall()
+    print results
+    return results
 
 
 if __name__ == "__main__":
