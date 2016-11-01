@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>EBT/SNAP Finder</h1>
+
+<div>
+    You searched for:
+        <div>Latitude: {{ latitude }} </div>
+        <div>Longitude: {{ longitude }} </div>
+        <div>Results within: {{ search_range }} miles.</div>
+    {% if retailers_list %}
+        {% for item in retailers_list %}
+            <div>Retailer name: {{ item[0] }} </div>
+            <div>distance from you: {{ item[1] }} </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

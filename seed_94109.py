@@ -12,7 +12,7 @@ def load_retailers():
 
     # Delete all rows in table, so if we need to run this a second time,
     # we won't be trying to add duplicate retailers
-    Retailer.query.delete()
+    # Retailer.query.delete()
 
     # Read CSV file
     with open("data/94109_only.csv") as source_file:
