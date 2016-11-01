@@ -1,3 +1,5 @@
 env/
 *.pyc
 *secrets*.sh
+test_sql_statements.sql
+example_gmaps_geocode.py

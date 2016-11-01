@@ -8,6 +8,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import Retailer, User, Favorite, connect_to_db, db
 
 import os
+import googlemaps
 
 
 app = Flask(__name__)
@@ -28,8 +29,8 @@ def homepage():
     return render_template('homepage.html', key=os.environ['GMAPS_API_KEY'])
 
 
-@app.route('/search', methods=['POST'])
-def search_retailers():
+@app.route('/search-coords', methods=['POST'])
+def search_retailers_by_coords():
     """Search DB for a list of results given lat & long by user."""
 
     latitude = float(request.form.get("latitude"))
@@ -59,6 +60,36 @@ def search_retailers():
 
     return render_template('search_results.html', retailers_list=retailers_list,
                            latitude=latitude, longitude=longitude, search_range=search_range)
+
+
+@app.route('/search-address', methods=['POST'])
+def search_retailers_by_addr():
+    """Search DB for a list of results given address by user."""
+
+    search_range = float(request.form.get("search-range"))
+    print "\nsearch range: ", search_range
+    # input_address = request.form.get("street")
+    # input_city = request.form.get("city")
+    # input_state = request.form.get("state")
+    address_list = []
+    address_list.append(request.form.get("street"))
+    address_list.append(request.form.get("city"))
+    address_list.append(request.form.get("state"))
+    print address_list
+    geocode_string = ", ".join(address_list)
+    print geocode_string
+
+    gmaps = googlemaps.Client(key=os.environ['GMAPS_API_KEY'])
+    geocode_result = gmaps.geocode(geocode_string)
+    print geocode_result
+
+    return """
+    <html>
+      <body>
+        geocode conversion complete
+      </body>
+    </html>
+    """
 
 
 if __name__ == "__main__":
