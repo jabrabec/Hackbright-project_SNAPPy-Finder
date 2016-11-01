@@ -10,7 +10,7 @@
 <div>
     <h2>Find a retailer near you:</h2>
         <div>
-          <form action="/search-coords" method="POST" id="lat-long-entry">
+          <form action="/search-coords" method="GET" id="lat-long-entry">
            Latitude: <input type="number" step="any" name="latitude" required>
            Longitude: <input type="number" step="any" name="longitude" required>
            Search range:
@@ -27,7 +27,7 @@
           </form>
         </div>
         <div>
-          <form action="/search-address" method="POST" id="address-entry">
+          <form action="/search-address" method="GET" id="address-entry">
            Street: <input type="text" name="street" required>
            City: <input type="text" name="city" required>
            State (abbrev.): <input type="text" name="state" maxlength="2" required>

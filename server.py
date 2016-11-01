@@ -29,15 +29,15 @@ def homepage():
     return render_template('homepage.html', key=os.environ['GMAPS_API_KEY'])
 
 
-@app.route('/search-coords', methods=['POST'])
+@app.route('/search-coords', methods=['GET'])
 def search_retailers_by_coords():
     """Search DB for a list of results given lat & long by user."""
 
-    latitude = float(request.form.get("latitude"))
+    latitude = float(request.args.get("latitude"))
     print "\nlatitude: ", latitude
-    longitude = float(request.form.get("longitude"))
+    longitude = float(request.args.get("longitude"))
     print "\nlongitude: ", longitude
-    search_range = float(request.form.get("search-range"))
+    search_range = float(request.args.get("search-range"))
     print "\nsearch range: ", search_range
 
     # Haversine equation
@@ -62,19 +62,19 @@ def search_retailers_by_coords():
                            latitude=latitude, longitude=longitude, search_range=search_range)
 
 
-@app.route('/search-address', methods=['POST'])
+@app.route('/search-address', methods=['GET'])
 def search_retailers_by_addr():
     """Search DB for a list of results given address by user."""
 
-    search_range = float(request.form.get("search-range"))
+    search_range = float(request.args.get("search-range"))
     print "\nsearch range: ", search_range
-    # input_address = request.form.get("street")
-    # input_city = request.form.get("city")
-    # input_state = request.form.get("state")
+    # input_address = request.args.get("street")
+    # input_city = request.args.get("city")
+    # input_state = request.args.get("state")
     address_list = []
-    address_list.append(request.form.get("street"))
-    address_list.append(request.form.get("city"))
-    address_list.append(request.form.get("state"))
+    address_list.append(request.args.get("street"))
+    address_list.append(request.args.get("city"))
+    address_list.append(request.args.get("state"))
     print address_list
     geocode_string = ", ".join(address_list)
     print geocode_string
