@@ -7,6 +7,8 @@ from flask import (Flask, render_template, redirect, request, flash,
 from flask_debugtoolbar import DebugToolbarExtension
 from model import Retailer, User, Favorite, connect_to_db, db
 
+from helper_functions import sql_query_by_coords
+
 import os
 import googlemaps
 
@@ -53,13 +55,11 @@ def search_retailers_by_addr():
     search_range = float(request.args.get("search-range"))
     print "\nsearch range: ", search_range
 
-    address_list = []
-    address_list.append(request.args.get("street"))
-    address_list.append(request.args.get("city"))
-    address_list.append(request.args.get("state"))
-    print address_list
+    geocode_string = "%s, %s, %s" % (
+        request.args.get("street"),
+        request.args.get("city"),
+        request.args.get("state"))
 
-    geocode_string = ", ".join(address_list)
     print geocode_string
 
     gmaps = googlemaps.Client(key=os.environ['GMAPS_API_KEY'])
@@ -75,29 +75,6 @@ def search_retailers_by_addr():
 
     return render_template('search_results.html', retailers_list=retailers_list,
                            latitude=latitude, longitude=longitude, search_range=search_range)
-
-
-def sql_query_by_coords(latitude, longitude, search_range):
-    """Helper function used by both search routes to query database"""
-
-    # Haversine equation
-    sql_query = """SELECT name, (
-        3959*acos(cos(radians(:latitude))*cos(radians(lat))*cos(radians(
-            lng)-radians(:longitude))+sin(radians(:latitude))*sin(radians(
-            lat)))) AS distance
-            FROM retailers
-            WHERE (3959*acos(cos(radians(:latitude))*cos(radians(lat))*cos(
-                radians(lng)-radians(:longitude))+sin(radians(:latitude))*sin(
-                radians(lat)))) < :search_range
-                ORDER BY distance
-                LIMIT 20"""
-    cursor = db.session.execute(sql_query, {
-        'latitude': latitude,
-        'longitude': longitude,
-        'search_range': search_range})
-    results = cursor.fetchall()
-    print results
-    return results
 
 
 if __name__ == "__main__":

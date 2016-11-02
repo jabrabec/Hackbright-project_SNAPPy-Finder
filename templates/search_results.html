@@ -13,6 +13,8 @@
             <div>Retailer name: {{ item[0] }} </div>
             <div>distance from you: {{ item[1] }} </div>
         {% endfor %}
+    {% else %}
+        <div>No results found.</div>
     {% endif %}
 </div>
 
