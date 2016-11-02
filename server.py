@@ -78,7 +78,7 @@ def search_retailers_by_addr():
 
 
 if __name__ == "__main__":
-    # debut=True allows for use of DebugToolbarExtension downstream
+    # debug=True allows for use of DebugToolbarExtension downstream
     app.debug = True
 
     connect_to_db(app)

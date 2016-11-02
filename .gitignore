@@ -3,3 +3,4 @@ env/
 *secrets*.sh
 test_sql_statements.sql
 example_gmaps_geocode.py
+example_sql_queries.py
