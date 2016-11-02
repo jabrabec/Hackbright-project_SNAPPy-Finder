@@ -44,8 +44,11 @@ def search_retailers_by_coords():
 
     retailers_list = sql_query_by_coords(latitude, longitude, search_range)
 
+    geocode_string = ''
+
     return render_template('search_results.html', retailers_list=retailers_list,
-                           latitude=latitude, longitude=longitude, search_range=search_range)
+                           geocode_string=geocode_string, latitude=latitude, longitude=longitude,
+                           search_range=search_range)
 
 
 @app.route('/search-address', methods=['GET'])
@@ -74,7 +77,8 @@ def search_retailers_by_addr():
     retailers_list = sql_query_by_coords(latitude, longitude, search_range)
 
     return render_template('search_results.html', retailers_list=retailers_list,
-                           latitude=latitude, longitude=longitude, search_range=search_range)
+                           geocode_string=geocode_string, latitude=latitude, longitude=longitude,
+                           search_range=search_range)
 
 
 if __name__ == "__main__":

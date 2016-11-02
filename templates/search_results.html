@@ -3,11 +3,15 @@
 
 <h1>EBT/SNAP Finder</h1>
 
-<div>
-    You searched for:
-        <div>Latitude: {{ latitude }} </div>
-        <div>Longitude: {{ longitude }} </div>
-        <div>Results within: {{ search_range }} miles.</div>
+<div>You searched for:
+    {% if geocode_string %}
+    <div>Address: {{ geocode_string }} </div>
+    <div>Results within: {{ search_range }} miles.</div>    
+    {% else %}
+    <div>Latitude: {{ latitude }} </div>
+    <div>Longitude: {{ longitude }} </div>
+    <div>Results within: {{ search_range }} miles.</div>
+    {% endif %}
     {% if retailers_list %}
         <table>
             <tr>
