@@ -21,7 +21,7 @@ class Retailer(db.Model):
     lat = db.Column(db.Numeric(10, 6), nullable=False)
     lng = db.Column(db.Numeric(10, 6), nullable=False)
     address_1 = db.Column(db.String(80), nullable=False)
-    address_2 = db.Column(db.String(30), nullable=True)
+    address_2 = db.Column(db.String(80), nullable=True)
     city = db.Column(db.String(30), nullable=False)
     state = db.Column(db.String(2), nullable=False)
     zipcode = db.Column(db.Integer, nullable=False)
@@ -82,7 +82,10 @@ def connect_to_db(app):
     """Connect the database to our Flask app."""
 
     # Configure to use our test PostgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///testdb'
+    # testdb connection:
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///testdb'
+    # live/snap db connection:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///snap'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)

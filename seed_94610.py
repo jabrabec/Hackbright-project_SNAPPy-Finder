@@ -10,10 +10,6 @@ def load_retailers():
 
     print "Importing retailers..."
 
-    # Delete all rows in table, so if we need to run this a second time,
-    # we won't be trying to add duplicate retailers
-    # Retailer.query.delete()
-
     # Read CSV file
     with open("data/94610_only.csv") as source_file:
         example_data = list(csv.reader(source_file))
