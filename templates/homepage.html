@@ -29,8 +29,8 @@
     <h2>Find a retailer near you:</h2>
         <div>
           <form action="/search-coords" method="GET" id="lat-long-entry">
-           Latitude: <input type="number" step="any" name="latitude" required>
-           Longitude: <input type="number" step="any" name="longitude" required>
+           Latitude: <input type="number" step="any" name="latitude" id="latitude" required>
+           Longitude: <input type="number" step="any" name="longitude" id="longitude" required>
            Search range:
                 <select name="search-range" required>
                     <option value="0.1">0.1 miles</option>
@@ -43,7 +43,7 @@
                     <option value="10">10 miles</option>
                     <option value="25">25 miles</option>
                 </select>
-           <input type="submit">
+           <input type="submit" onclick="getLocation()">
           </form>
         </div>
         <div>
@@ -68,6 +68,7 @@
         </div>
 </div>
 
+<!-- GMaps: get location -->
 <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
@@ -108,7 +109,31 @@
                               'Error: Your browser doesn\'t support geolocation.');
       }
     </script>
+
+<!-- GMaps: show map -->
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key={{ key }}&callback=initMap">
+    </script>
+
+  <!-- HTML5 geolocation for prepopulating lat/long fields -->
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        getLocation();
+      });
+      // var x = document.getElementById("demo");
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        }
+        // else {
+        // x.innerHTML = "Geolocation is not supported by this browser.";
+        // }
+      }
+      function showPosition(position) {
+      // x.innerHTML = "Latitude: " + position.coords.latitude + 
+      // "<br>Longitude: " + position.coords.longitude;
+      document.getElementById("latitude").value = position.coords.latitude   
+      document.getElementById("longitude").value = position.coords.longitude
+      }
     </script>
 {% endblock %}
