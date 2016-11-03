@@ -4,3 +4,4 @@ env/
 test_sql_statements.sql
 example_gmaps_geocode.py
 example_sql_queries.py
+example_yelp_api_queries.py
