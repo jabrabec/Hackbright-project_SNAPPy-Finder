@@ -48,7 +48,7 @@ def search_retailers_by_coords():
 
     return render_template('search_results.html', retailers_list=retailers_list,
                            geocode_string=geocode_string, latitude=latitude, longitude=longitude,
-                           search_range=search_range)
+                           search_range=search_range, key=os.environ['GMAPS_API_KEY'])
 
 
 @app.route('/search-address', methods=['GET'])
@@ -78,7 +78,7 @@ def search_retailers_by_addr():
 
     return render_template('search_results.html', retailers_list=retailers_list,
                            geocode_string=geocode_string, latitude=latitude, longitude=longitude,
-                           search_range=search_range)
+                           search_range=search_range, key=os.environ['GMAPS_API_KEY'])
 
 
 if __name__ == "__main__":
