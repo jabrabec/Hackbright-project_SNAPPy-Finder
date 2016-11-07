@@ -22,7 +22,7 @@
            Latitude: <input type="number" step="any" name="latitude" id="latitude" required>
            Longitude: <input type="number" step="any" name="longitude" id="longitude" required>
            Search range:
-                <select name="search-range" required>
+                <select name="search-range" id="coords-search-range" required>
                     <option value="0.1">0.1 miles</option>
                     <option value="0.2">0.2 miles</option>
                     <option value="0.3">0.3 miles</option>
@@ -33,7 +33,7 @@
                     <option value="10">10 miles</option>
                     <option value="25">25 miles</option>
                 </select>
-           <input type="submit" onclick="getLocation()">
+           <input type="submit" id="coords-search">
           </form>
         </div>
         <div>
@@ -42,7 +42,7 @@
            City: <input type="text" name="city" required>
            State (abbrev.): <input type="text" name="state" maxlength="2" required>
            Search range:
-                <select name="search-range" required>
+                <select name="search-range" id="addr-search-range" required>
                     <option value="0.1">0.1 miles</option>
                     <option value="0.2">0.2 miles</option>
                     <option value="0.3">0.3 miles</option>
@@ -56,6 +56,8 @@
            <input type="submit">
           </form>
         </div>
+  <div id="test">
+  </div>
 </div>
 
 <!-- GMaps: get location -->
@@ -120,4 +122,42 @@
   document.getElementById("longitude").value = position.coords.longitude
   }
 </script>
+
+<script type="text/javascript">
+  "use strict";
+  
+    function displayResultsList(result){
+        // This clears out the div in case there were previous search results.
+        $('#test').empty();
+        // Print out JSON string
+        $('#test').html(result);
+        console.log(result);  
+    }    
+
+    function submitCoords(position) {
+        // Grab the lat/long/search range values
+        var latitude = position.coords.latitude;
+        console.log(latitude);
+        var longitude = position.coords.longitude;
+        console.log(longitude);
+        var searchRange = $('#coords-search-range').val();
+        console.log(searchRange);
+        // Creating the data to be sent with the AJAX request
+        var params = {'latitude': latitude, 'longitude': longitude, 'searchRange': searchRange };
+        // The AJAX get request, passing in data, referring to success handler.
+        $.get('/search-coords.json', params, displayResultsList);
+    }
+
+    function alsoGetLocation(evt) {
+      evt.preventDefault();
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(submitCoords);
+      }
+    }
+
+    // Event listener on the button refers to the event handler.
+    $('#coords-search').on('click', alsoGetLocation);
+</script>
+
 {% endblock %}
