@@ -56,7 +56,7 @@
            <input type="submit" id="addr-search">
           </form>
         </div>
-  <div id="test">
+  <div id="search-results">
   </div>
 </div>
 
@@ -128,9 +128,9 @@
   
     function displayResultsList(result){
       // This clears out the div in case there were previous search results.
-      $('#test').empty();
+      $('#search-results').empty();
       // Print out JSON string
-      $('#test').html(result);
+      $('#search-results').html(result);
       console.log(result);  
     }    
 
