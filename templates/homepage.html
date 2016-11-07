@@ -125,14 +125,44 @@
 
 <script type="text/javascript">
   "use strict";
-  
+
     function displayResultsList(result){
+      console.log(result);
       // This clears out the div in case there were previous search results.
       $('#search-results').empty();
-      // Print out JSON string
-      $('#search-results').html(result);
-      console.log(result);  
-    }    
+      // Fill out #search-results div either with results table or 'no results' text
+      var divContents = [];
+
+      if (result[0]) {
+        var headerRow = '<table>' +
+                        '<tr>' +
+                        '<th>Name</th>' +
+                        '<th>Address</th>' +
+                        '<th>City</th>' +
+                        '<th>State</th>' +
+                        '<th>Zipcode</th>' +
+                        '<th>Distance (mi)</th>' +
+                        '</tr>';
+        divContents.push(headerRow);
+        for (var i in result) {
+          // create a temporary holding string to concatenate html
+          var tempString = '<tr><td>' + result[i][0] + 
+                          '</td><td>' + result[i][3] +
+                          ' ' + result[i][4] +
+                          '</td><td>' + result[i][5] + 
+                          '</td><td>' + result[i][6] + 
+                          '</td><td>' + result[i][7] + 
+                          '</td><td>' + result[i][8] + 
+                          '</tr>';
+          divContents.push(tempString);
+        }
+        divContents.push('</table>');
+        divContents = divContents.join('');
+      } else {
+        divContents.push('No results found.');
+      }
+      $('#search-results').html(divContents);
+  }    
 
     function submitCoords(position) {
       // Grab the lat/long/search range values
