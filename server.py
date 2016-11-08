@@ -54,26 +54,6 @@ def homepage():
     return render_template('homepage.html', key=os.environ['GMAPS_API_KEY'])
 
 
-@app.route('/search-coords', methods=['GET'])
-def search_retailers_by_coords():
-    """Search DB for a list of results given lat, long, and range by user."""
-
-    latitude = float(request.args.get("latitude"))
-    print "\nlatitude: ", latitude
-    longitude = float(request.args.get("longitude"))
-    print "\nlongitude: ", longitude
-    search_range = float(request.args.get("search-range"))
-    print "\nsearch range: ", search_range
-
-    retailers_list = sql_query_by_coords(latitude, longitude, search_range)
-
-    geocode_string = ''
-
-    return render_template('search_results.html', retailers_list=retailers_list,
-                           geocode_string=geocode_string, latitude=latitude, longitude=longitude,
-                           search_range=search_range, key=os.environ['GMAPS_API_KEY'])
-
-
 @app.route('/search-coords.json', methods=['GET'])
 def search_retailers_by_coords_json():
     """Search DB for a list of results given lat, long, and range by user."""
@@ -116,36 +96,6 @@ def search_retailers_by_addr_json():
     retailers_list = sql_query_by_coords(latitude, longitude, search_range)
 
     return jsonify(retailers_list)
-
-
-@app.route('/search-address', methods=['GET'])
-def search_retailers_by_addr():
-    """Search DB for a list of results given an address by user."""
-
-    search_range = float(request.args.get("search-range"))
-    print "\nsearch range: ", search_range
-
-    geocode_string = "%s, %s, %s" % (
-        request.args.get("street"),
-        request.args.get("city"),
-        request.args.get("state"))
-
-    print geocode_string
-
-    gmaps = googlemaps.Client(key=os.environ['GMAPS_API_KEY'])
-    geocode_result = gmaps.geocode(geocode_string)
-    print geocode_result
-
-    latitude = geocode_result[0].get('geometry').get('location').get('lat')
-    print "\nlatitude: ", latitude
-    longitude = geocode_result[0].get('geometry').get('location').get('lng')
-    print "\nlongitude: ", longitude
-
-    retailers_list = sql_query_by_coords(latitude, longitude, search_range)
-
-    return render_template('search_results.html', retailers_list=retailers_list,
-                           geocode_string=geocode_string, latitude=latitude, longitude=longitude,
-                           search_range=search_range, key=os.environ['GMAPS_API_KEY'])
 
 
 if __name__ == "__main__":
