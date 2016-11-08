@@ -7,7 +7,7 @@ function displayResultsList(result){
   
   // Fill out #search-results div either with results table or 'no results' text
   // create empty divContents array for holding results
-  var divContents = [];
+  var divContents = ['<h3>Results:</h3>'];
   // perform the following only if 'results' has content:
   if (result[0]) {
     // create header row

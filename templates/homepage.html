@@ -18,9 +18,8 @@
 <div>
     <h2>Find a retailer near you:</h2>
         <div>
+          <h3>Automatically search for nearby locations:</h3>
           <form action="/search-coords" method="GET" id="lat-long-entry">
-           Latitude: <input type="number" step="any" id="latitude" required>
-           Longitude: <input type="number" step="any" id="longitude" required>
            Search range:
                 <select name="search-range" id="coords-search-range" required>
                     <option value="0.1">0.1 miles</option>
@@ -33,10 +32,11 @@
                     <option value="10">10 miles</option>
                     <option value="25">25 miles</option>
                 </select>
-           <input type="submit" id="coords-search">
+           <input type="submit" value="Search!" id="coords-search">
           </form>
         </div>
         <div>
+          <h3>Search near a specific address:</h3>
           <form action="/search-address" method="GET" id="address-entry">
            Street: <input type="text" id="street" required>
            City: <input type="text" id="city" required>
@@ -53,7 +53,7 @@
                     <option value="10">10 miles</option>
                     <option value="25">25 miles</option>
                 </select>
-           <input type="submit" id="addr-search">
+           <input type="submit" value="Search!" id="addr-search">
           </form>
         </div>
   <div id="search-results">
@@ -105,22 +105,6 @@
 <!-- GMaps: make API call -->
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key={{ key }}&callback=initMap">
-</script>
-
-<!-- HTML5 geolocation for prepopulating lat/long fields -->
-<script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function() {
-    getLocation();
-  });
-  function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    }
-  }
-  function showPosition(position) {
-  document.getElementById("latitude").value = position.coords.latitude   
-  document.getElementById("longitude").value = position.coords.longitude
-  }
 </script>
 
 <script type="text/javascript" src="static/search_results.js"></script>
