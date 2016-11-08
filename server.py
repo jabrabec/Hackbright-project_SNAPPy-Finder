@@ -1,7 +1,6 @@
 """EBT/SNAP Webapp"""
 
 from jinja2 import StrictUndefined
-# Tailor the imported methods later
 from flask import (Flask,
                    render_template,
                    # redirect,
@@ -50,7 +49,6 @@ app.json_encoder = MyJSONEncoder
 def homepage():
     """Show homepage."""
 
-    # how to mask API key in raw HTML that gets rendered?
     return render_template('homepage.html', key=os.environ['GMAPS_API_KEY'])
 
 
