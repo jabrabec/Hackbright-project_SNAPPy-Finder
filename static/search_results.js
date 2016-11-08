@@ -35,6 +35,17 @@ function displayResultsList(result){
                       '</tr>';
       // add this row to the divContents holding array
       divContents.push(tempString);
+      var markerLat = parseFloat(result[i][1]);
+      console.log(markerLat);
+      var markerLong = parseFloat(result[i][2]);
+      console.log(markerLong);
+      var latLng = {lat: markerLat, lng: markerLong};
+      console.log(latLng);
+      var marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          title: result[i][0]
+        });
     }
     // finalize table tag
     divContents.push('</table>');

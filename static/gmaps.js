@@ -5,8 +5,12 @@
   // failed.", it means you probably did not give permission for the browser to
   // locate you.
 
+  // define map outside of function so that map markers can be added in
+  // search_results.js file
+  var map;
+
   function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 37.7886679, lng: -122.411499},
       zoom: 17
     });
