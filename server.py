@@ -85,6 +85,7 @@ def search_retailers_by_addr_json():
     gmaps = googlemaps.Client(key=os.environ['GMAPS_API_KEY'])
     geocode_result = gmaps.geocode(geocode_string)
     print geocode_result
+    print type(geocode_result)
 
     latitude = geocode_result[0].get('geometry').get('location').get('lat')
     print "\nlatitude: ", latitude

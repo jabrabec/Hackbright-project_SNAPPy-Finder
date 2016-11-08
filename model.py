@@ -26,6 +26,9 @@ class Retailer(db.Model):
     state = db.Column(db.String(2), nullable=False)
     zipcode = db.Column(db.Integer, nullable=False)
     county = db.Column(db.String(30), nullable=False)
+    yelp_id = db.Column(db.String(125), nullable=True)
+    yelp_url = db.Column(db.String(125), nullable=True)
+    yelp_img = db.Column(db.String(125), nullable=True)
 
     def __repr__(self):
         """How the object should be represented when printed."""
@@ -83,9 +86,9 @@ def connect_to_db(app):
 
     # Configure to use our test PostgreSQL database
     # testdb connection:
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///testdb'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///testdb'
     # live/snap db connection:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///snap'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///snap'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
