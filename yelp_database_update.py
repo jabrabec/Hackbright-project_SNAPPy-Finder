@@ -40,17 +40,13 @@ for db_id in range(33):
     # set-up regex to find any strings that start with digits
     pattern = re.compile("^\d.*")
     # if the last item in list of search terms for retailer name starts
-    # with a digit, delete it as it is probably a store number.
+    # with a digit, delete it as it is probably a store ID number (e.g. for
+    # chains retailers).
     # also, including this field in search terms returns empty list from Yelp.
     if bool(pattern.match(search_names[-1])):
         del search_names[-1]
 
-    # # also make sure that the third search term is not a single character;
-    # # usually this would be a '-' or '&' and Yelp returns empty list in this case
-    # if len(search_names[2:3]) <= 1:
-    #     del search_names[2:3]
-
-    # Yelp search returns more accurate results with fewer terms provided.
+    # Yelp search seems to return more accurate results with fewer terms provided.
     # Only the first up to 3 search terms from the name field are submitted.
     search_terms = " ".join(search_names[:3])
 
@@ -61,8 +57,10 @@ for db_id in range(33):
               'limit': 1,
               'sort_by': "distance"}
 
+    # execute the Yelp search API call
     yelp_search = requests.get(url=url, params=params, headers=headers)
 
+    # Convert API call results into JSON format
     yelp_result = yelp_search.json()
 
     # check that yelp_search did not return empty list; assign values and add to
@@ -79,11 +77,10 @@ for db_id in range(33):
             retailer_id=curr_retailer.retailer_id).update(
             {'yelp_id': yelp_id, 'yelp_url': yelp_url, 'yelp_img': yelp_img})
 
+# commit these .update() changes to the db
 db.session.commit()
 
 
 if __name__ == "__main__":
 
-    # from server import app
-    # connect_to_db(app)
     print "Connected to DB."
