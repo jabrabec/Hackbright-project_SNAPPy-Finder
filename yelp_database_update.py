@@ -77,8 +77,8 @@ for db_id in range(33):
             retailer_id=curr_retailer.retailer_id).update(
             {'yelp_id': yelp_id, 'yelp_url': yelp_url, 'yelp_img': yelp_img})
 
-# commit these .update() changes to the db
-db.session.commit()
+        # commit these .update() changes to the db
+        db.session.commit()
 
 
 if __name__ == "__main__":
