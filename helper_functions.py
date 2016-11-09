@@ -5,10 +5,10 @@ def sql_query_by_coords(latitude, longitude, search_range):
     """Helper function used by both search routes to query database"""
 
     # Haversine equation for finding the geodesic distance between two points
-    sql_query = """SELECT name, lat, lng, address_1, address_2, city, state, zipcode, (
-        3959*acos(cos(radians(:latitude))*cos(radians(lat))*cos(radians(
-            lng)-radians(:longitude))+sin(radians(:latitude))*sin(radians(
-            lat)))) AS distance
+    sql_query = """SELECT name, lat, lng, address_1, address_2, city, state,
+        zipcode, yelp_url, yelp_img, (3959*acos(cos(radians(:latitude))*cos(
+        radians(lat))*cos(radians(lng)-radians(:longitude))+sin(radians(
+        :latitude))*sin(radians(lat)))) AS distance
     FROM retailers
     WHERE (3959*acos(cos(radians(:latitude))*cos(radians(lat))*cos(
         radians(lng)-radians(:longitude))+sin(radians(:latitude))*sin(
@@ -28,6 +28,6 @@ def sql_query_by_coords(latitude, longitude, search_range):
 
     # round the returned distance calculation to 3 decimal places only
     for item in results_list:
-        item[8] = round(item[8], 3)
+        item[10] = round(item[10], 3)
 
     return results_list

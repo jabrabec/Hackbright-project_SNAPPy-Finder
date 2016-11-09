@@ -19,20 +19,23 @@ function displayResultsList(result){
                     '<th>State</th>' +
                     '<th>Zipcode</th>' +
                     '<th>Distance (mi)</th>' +
+                    '<th>Preview img</th>' +
                     '</tr>';
     // add header row to divContents holding array
     divContents.push(headerRow);
     // iterate over items in JSON-formatted results
     for (var i in result) {
       // create a temporary holding string to concatenate html for a single row
-      var tempString = '<tr><td>' + result[i][0] + 
-                      '</td><td>' + result[i][3] +
+      var tempString = '<tr><td><a href="' + result[i][8] + 
+                      '">'+ result[i][0] +
+                      '</a></td><td>' + result[i][3] +
                       ' ' + result[i][4] +
                       '</td><td>' + result[i][5] + 
                       '</td><td>' + result[i][6] + 
                       '</td><td>' + result[i][7] + 
-                      '</td><td>' + result[i][8] + 
-                      '</tr>';
+                      '</td><td>' + result[i][10] + 
+                      '</td><td><img class="preview-img" src="' + result[i][9] + 
+                      '"></tr>';
       // add this row to the divContents holding array
       divContents.push(tempString);
       var markerLat = parseFloat(result[i][1]);
