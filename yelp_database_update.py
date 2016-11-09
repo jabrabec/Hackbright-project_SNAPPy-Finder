@@ -58,7 +58,7 @@ for db_id in range(12500):
     # parameters to search in Yelp
     params = {'location': location,
               'term': search_terms,
-              'categories': "food,health,restaurants",
+              'categories': "food,health,restaurants,shopping",
               'limit': 1,
               'sort_by': "distance"}
 
