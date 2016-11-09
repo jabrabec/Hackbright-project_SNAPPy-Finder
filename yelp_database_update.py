@@ -23,13 +23,18 @@ url = 'https://api.yelp.com/v3/businesses/search'
 yelp_access_token = yelp_token.json()['access_token']
 headers = {'Authorization': 'Bearer %s' % yelp_access_token}
 
+# for populating testdb:
 # first, updated retailer_ids 1-15
 # for db_id in range(15):
 #   db_id += 1
 
 # next, update retailer_ids 16-48
-for db_id in range(33):
-    db_id += 16
+# for db_id in range(33):
+#     db_id += 16
+
+# for populating live snap db, approx. half of all entries:
+for db_id in range(12500):
+    db_id += 1
 
     curr_retailer = Retailer.query.get(db_id)
 

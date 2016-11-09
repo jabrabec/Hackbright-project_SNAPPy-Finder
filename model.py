@@ -86,9 +86,9 @@ def connect_to_db(app):
 
     # Configure to use our test PostgreSQL database
     # testdb connection:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///testdb'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///testdb'
     # live/snap db connection:
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///snap'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///snap'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
