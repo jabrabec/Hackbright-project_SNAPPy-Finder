@@ -22,8 +22,7 @@ import googlemaps
 app = Flask(__name__)
 
 # Required to use Flask sessions and the debug toolbar
-# Secret key to be changed later
-app.secret_key = "ABC"
+app.secret_key = os.environ['FLASK_KEY']
 
 #Jinja will raise an error instead of failing with any undefined variables
 app.jinja_env.undefined = StrictUndefined
