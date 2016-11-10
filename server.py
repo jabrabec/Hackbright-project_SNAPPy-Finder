@@ -56,11 +56,8 @@ def search_retailers_by_coords_json():
     """Search DB for a list of results given lat, long, and range by user."""
 
     latitude = float(request.args.get("latitude"))
-    print "\nlatitude: ", latitude
     longitude = float(request.args.get("longitude"))
-    print "\nlongitude: ", longitude
     search_range = float(request.args.get("searchRange"))
-    print "\nsearch range: ", search_range
 
     retailers_list = sql_query_by_coords(latitude, longitude, search_range)
 
@@ -72,24 +69,17 @@ def search_retailers_by_addr_json():
     """Search DB for a list of results given an address by user."""
 
     search_range = float(request.args.get("searchRange"))
-    print "\nsearch range: ", search_range
 
     geocode_string = "%s, %s, %s" % (
         request.args.get("street"),
         request.args.get("city"),
         request.args.get("state"))
 
-    print geocode_string
-
     gmaps = googlemaps.Client(key=os.environ['GMAPS_API_KEY'])
     geocode_result = gmaps.geocode(geocode_string)
-    print geocode_result
-    print type(geocode_result)
 
     latitude = geocode_result[0].get('geometry').get('location').get('lat')
-    print "\nlatitude: ", latitude
     longitude = geocode_result[0].get('geometry').get('location').get('lng')
-    print "\nlongitude: ", longitude
 
     retailers_list = sql_query_by_coords(latitude, longitude, search_range)
 
