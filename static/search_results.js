@@ -35,11 +35,11 @@ function displayResultsFromJSON(result){
   
   // Fill out #search-results div either with results table or 'no results' text
   // create empty divContents array for holding results
-  var divContents = ['<h3>Results:</h3>'];
+  var divContents = [];
   // perform the following only if 'results' has content:
   if (result[0]) {
     // create header row
-    var headerRow = '<table>' +
+    var headerRow = '<h3>Results:</h3><table>' +
                     '<tr>' +
                     '<th>Name</th>' +
                     '<th>Address</th>' +
@@ -86,7 +86,7 @@ function displayResultsFromJSON(result){
   
   // if not result[0], simply state "no results found"
   } else {
-    divContents.push('No results found.');
+    divContents.push('<h3>No results found.</h3>');
   }
   
   // update the contents on main page of div id="search-results"
