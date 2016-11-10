@@ -83,15 +83,27 @@ function displayResultsFromJSON(result){
     divContents.push('</table>');
     // concatenate all results in divContents into a single string
     divContents = divContents.join('');
-  
-  // if not result[0], simply state "no results found"
+    
+    // Find and set boundaries of map based on spread of results markers to
+    // ensure all are visible on the map.
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < markers.length; i++) {
+      bounds.extend(markers[i].getPosition());
+    }
+  // ensure new bounds do not obscure info window for searched address from view
+  bounds.extend(infoWindow.getPosition());
+  // apply bounds to map object
+  map.fitBounds(bounds);
+  // if not result[0], simply state "no results found" and center map on infoWindow
   } else {
+    map.setCenter(infoWindow.getPosition());
     divContents.push('<h3>No results found.</h3>');
   }
   
   // update the contents on main page of div id="search-results"
   $('#search-results').html(divContents);
 }    
+
 
 
 function submitCoords(position) {
@@ -132,7 +144,6 @@ function submitAddress(evt) {
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == 'OK') {
-        map.setCenter(results[0].geometry.location);
         infoWindow.setPosition(results[0].geometry.location);
         infoWindow.setContent('Searching near this address.');
       } else {
