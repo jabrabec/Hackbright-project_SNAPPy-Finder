@@ -45,8 +45,13 @@ headers = {'Authorization': 'Bearer %s' % yelp_access_token}
 #     db_id += 13368
 
 # for populating live snap db, picking up where API returned JSON error:
-for db_id in range(9597):
-    db_id += 15456
+# for db_id in range(9597):
+#     db_id += 15456
+
+# for populating live snap db, picking up where API stopped responding due to
+# internet being spotty:
+for db_id in range(4281):
+    db_id += 20772
 
     curr_retailer = Retailer.query.get(db_id)
 
