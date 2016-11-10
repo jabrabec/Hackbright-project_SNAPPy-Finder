@@ -1,9 +1,37 @@
 "use strict";
 
+// create holding array for storing results; this will allow markers to be
+// removed upon repeated search requests
+var markers = [];
+
+// Sets the map on all markers in the array.
+// Will only be used to clear existing markers from previous search.
+function setMapOnAll(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+
+// Removes the markers from the map, but keeps them in the array.
+// Will only be used to clear existing markers from previous search.
+function clearMarkers() {
+  setMapOnAll(null);
+}
+
+// Deletes all markers in the array by removing references to them.
+// Will only be used to clear existing markers from previous search;
+// called only when displayResultsFromJSON is called.
+function deleteMarkers() {
+  clearMarkers();
+  markers = [];
+}
 
 function displayResultsFromJSON(result){
   // This clears out the div in case there were previous search results.
   $('#search-results').empty();
+
+  // Clear any existing markers that may be present from previous search.
+  deleteMarkers();
   
   // Fill out #search-results div either with results table or 'no results' text
   // create empty divContents array for holding results
@@ -38,6 +66,9 @@ function displayResultsFromJSON(result){
                       '"></tr>';
       // add this row to the divContents holding array
       divContents.push(tempString);
+      
+      // Set up markers for each result and add them to map. ALso add them to
+      // markers array to be able to remove them later.
       var markerLat = parseFloat(result[i][1]);
       var markerLong = parseFloat(result[i][2]);
       var latLng = {lat: markerLat, lng: markerLong};
@@ -46,15 +77,18 @@ function displayResultsFromJSON(result){
           map: map,
           title: result[i][0]
         });
+      markers.push(marker);
     }
     // finalize table tag
     divContents.push('</table>');
     // concatenate all results in divContents into a single string
     divContents = divContents.join('');
+  
   // if not result[0], simply state "no results found"
   } else {
     divContents.push('No results found.');
   }
+  
   // update the contents on main page of div id="search-results"
   $('#search-results').html(divContents);
 }    
@@ -93,6 +127,7 @@ function submitAddress(evt) {
   var state = $('#state').val();
   var searchRange = $('#addr-search-range').val();
 
+  // recenter map on submitted address location
   var address = (street + ", " + city + ", " + state)
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode( { 'address': address}, function(results, status) {
