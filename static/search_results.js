@@ -1,7 +1,7 @@
 "use strict";
 
 
-function displayResultsList(result){
+function displayResultsFromJSON(result){
   // This clears out the div in case there were previous search results.
   $('#search-results').empty();
   
@@ -68,7 +68,7 @@ function submitCoords(position) {
   // set data parameters for sending with the AJAX request
   var params = {'latitude': latitude, 'longitude': longitude, 'searchRange': searchRange };
   // send AJAX get request, passing in data, referring to success handler.
-  $.get('/search-coords.json', params, displayResultsList);
+  $.get('/search-coords.json', params, displayResultsFromJSON);
 }
 
 // named to avoid confusion with gmaps function
@@ -112,7 +112,7 @@ function submitAddress(evt) {
                 'state': state,
                 'searchRange': searchRange };
   // send AJAX get request, passing in data, referring to success handler.
-  $.get('/search-address.json', params, displayResultsList);
+  $.get('/search-address.json', params, displayResultsFromJSON);
   }
 
 // Event listener for search by address button.
