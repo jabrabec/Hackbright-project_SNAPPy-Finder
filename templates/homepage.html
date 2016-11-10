@@ -11,7 +11,7 @@
   <h2>Find a retailer near you:</h2>
   <div>
     <h3>Automatically search for nearby locations:</h3>
-    <form action="/search-coords" method="GET" id="lat-long-entry">
+    <form action="/search-coords.json" method="GET" id="lat-long-entry">
       Search range:
           <select name="search-range" id="coords-search-range" required>
           <option value="0.1">0.1 miles</option>
@@ -29,7 +29,7 @@
   </div>
   <div>
     <h3>Search near a specific address:</h3>
-    <form action="/search-address" method="GET" id="address-entry">
+    <form action="/search-address.json" method="GET" id="address-entry">
       Street: <input type="text" id="street" required>
       City: <input type="text" id="city" required>
       State (abbrev.): <input type="text" id="state" maxlength="2" required>
