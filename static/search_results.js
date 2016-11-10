@@ -85,6 +85,7 @@ function alsoGetLocation(evt) {
 $('#coords-search').on('click', alsoGetLocation);
 
 
+// Submit address to server and recenter map on that location.
 function submitAddress(evt) {
   evt.preventDefault();
   // get the address & search range values entered into text fields by user
@@ -92,6 +93,19 @@ function submitAddress(evt) {
   var city = $('#city').val();
   var state = $('#state').val();
   var searchRange = $('#addr-search-range').val();
+
+  var address = (street + ", " + city + ", " + state)
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        infoWindow.setPosition(results[0].geometry.location);
+        infoWindow.setContent('Searching near this address.');
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+
   // set data parameters for sending with the AJAX request
   var params = {'street': street,
                 'city': city,

@@ -5,16 +5,17 @@
   // failed.", it means you probably did not give permission for the browser to
   // locate you.
 
-  // define map outside of function so that map markers can be added in
-  // search_results.js file
+  // define map & infoWindow outside of function so that map markers can be
+  // added and map recentered in search_results.js file
   var map;
+  var infoWindow;
 
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 37.7886679, lng: -122.411499},
       zoom: 17
     });
-    var infoWindow = new google.maps.InfoWindow({map: map});
+    infoWindow = new google.maps.InfoWindow({map: map});
 
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
