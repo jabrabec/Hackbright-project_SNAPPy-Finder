@@ -71,18 +71,17 @@ function submitCoords(position) {
   $.get('/search-coords.json', params, displayResultsFromJSON);
 }
 
-// named to avoid confusion with gmaps function
-function alsoGetLocation(evt) {
+// get HTML5 geolocation and pass to submitCoords function
+function getLocation(evt) {
   evt.preventDefault();
 
-  // get HTML5 geolocation and pass to submitCoords function
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(submitCoords);
   }
 }
 
 // Event listener for search by coordinates button.
-$('#coords-search').on('click', alsoGetLocation);
+$('#coords-search').on('click', getLocation);
 
 
 // Submit address to server and recenter map on that location.
