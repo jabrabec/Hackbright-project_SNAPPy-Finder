@@ -91,12 +91,13 @@ function displayResultsFromJSON(result){
       bounds.extend(markers[i].getPosition());
     }
   // ensure new bounds do not obscure info window for searched address from view
-  bounds.extend(infoWindow.getPosition());
+  bounds.extend(userInfoWindow.getPosition());
   // apply bounds to map object
   map.fitBounds(bounds);
-  // if not result[0], simply state "no results found" and center map on infoWindow
+  // if not result[0], simply state "no results found" and center map on
+  // userInfoWindow
   } else {
-    map.setCenter(infoWindow.getPosition());
+    map.setCenter(userInfoWindow.getPosition());
     divContents.push('<h3>No results found.</h3>');
   }
   
@@ -111,10 +112,10 @@ function submitCoords(position) {
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
   var searchRange = $('#coords-search-range').val();
-  // (re)set infoWindow in case search-by-coords is a repeat search after a
+  // (re)set userInfoWindow in case search-by-coords is a repeat search after a
   // search-by-coords has been performed
-  infoWindow.setPosition(pos);
-  infoWindow.setContent('You are here.');
+  userInfoWindow.setPosition(pos);
+  userInfoWindow.setContent('You are here.');
   // set data parameters for sending with the AJAX request
   var params = {'latitude': latitude, 'longitude': longitude, 'searchRange': searchRange };
   // send AJAX get request, passing in data, referring to success handler.
@@ -148,8 +149,8 @@ function submitAddress(evt) {
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == 'OK') {
-        infoWindow.setPosition(results[0].geometry.location);
-        infoWindow.setContent('Searching near this address.');
+        userInfoWindow.setPosition(results[0].geometry.location);
+        userInfoWindow.setContent('Searching near this address.');
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }

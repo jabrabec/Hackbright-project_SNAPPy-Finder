@@ -5,10 +5,10 @@
   // failed.", it means you probably did not give permission for the browser to
   // locate you.
 
-  // define map, pos, & infoWindow outside of function so that map markers can
+  // define map, pos, & userInfoWindow outside of function so that map markers can
   // be referenced in search_results.js file
   var map;
-  var infoWindow;
+  var userInfoWindow;
   var pos;
 
   function initMap() {
@@ -16,7 +16,7 @@
       center: {lat: 37.7886679, lng: -122.411499},
       zoom: 17
     });
-    infoWindow = new google.maps.InfoWindow({map: map});
+    userInfoWindow = new google.maps.InfoWindow({map: map});
 
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
@@ -26,21 +26,21 @@
           lng: position.coords.longitude
         };
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('You are here.');
+        userInfoWindow.setPosition(pos);
+        userInfoWindow.setContent('You are here.');
         map.setCenter(pos);
       }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
+        handleLocationError(true, userInfoWindow, map.getCenter());
       });
     } else {
       // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
+      handleLocationError(false, userInfoWindow, map.getCenter());
     }
   }
 
-  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
+  function handleLocationError(browserHasGeolocation, userInfoWindow, pos) {
+    userInfoWindow.setPosition(pos);
+    userInfoWindow.setContent(browserHasGeolocation ?
                           'Error: The Geolocation service failed.' :
                           'Error: Your browser doesn\'t support geolocation.');
   }
