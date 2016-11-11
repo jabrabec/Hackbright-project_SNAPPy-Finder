@@ -111,6 +111,10 @@ function submitCoords(position) {
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
   var searchRange = $('#coords-search-range').val();
+  // (re)set infoWindow in case search-by-coords is a repeat search after a
+  // search-by-coords has been performed
+  infoWindow.setPosition(pos);
+  infoWindow.setContent('You are here.');
   // set data parameters for sending with the AJAX request
   var params = {'latitude': latitude, 'longitude': longitude, 'searchRange': searchRange };
   // send AJAX get request, passing in data, referring to success handler.
