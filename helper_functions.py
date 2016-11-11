@@ -1,7 +1,7 @@
 from model import db
 
 
-def sql_query_by_coords(latitude, longitude, search_range):
+def sql_query_by_coords(latitude, longitude, search_range, limit_to=20, offset_by=0):
     """Helper function used by both search routes to query database"""
 
     # Haversine equation for finding the geodesic distance between two points
@@ -14,13 +14,16 @@ def sql_query_by_coords(latitude, longitude, search_range):
         radians(lng)-radians(:longitude))+sin(radians(:latitude))*sin(
         radians(lat)))) < :search_range
     ORDER BY distance
-    LIMIT 20"""
+    LIMIT :limit_to
+    OFFSET :offset_by"""
 
     # perform db query and get all results
     cursor = db.session.execute(sql_query, {
         'latitude': latitude,
         'longitude': longitude,
-        'search_range': search_range})
+        'search_range': search_range,
+        'limit_to': limit_to,
+        'offset_by': offset_by})
     results = cursor.fetchall()
 
     # turn results into a list of lists instead of a list of tuples
