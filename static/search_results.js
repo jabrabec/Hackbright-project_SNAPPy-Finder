@@ -39,7 +39,7 @@ function displayResultsFromJSON(result){
   // perform the following only if 'results' has content:
   if (result[0]) {
     // create header row
-    var headerRow = '<h3>Results:</h3><table>' +
+    var headerRow = '<h3>Results:</h3><table><thead>' +
                     '<tr>' +
                     '<th>Name</th>' +
                     '<th>Address</th>' +
@@ -48,7 +48,7 @@ function displayResultsFromJSON(result){
                     '<th>Zipcode</th>' +
                     '<th>Distance (mi)</th>' +
                     '<th>Preview img</th>' +
-                    '</tr>';
+                    '</tr></thead><tbody>';
     // add header row to divContents holding array
     divContents.push(headerRow);
     // iterate over items in JSON-formatted results
@@ -80,7 +80,7 @@ function displayResultsFromJSON(result){
       markers.push(marker);
     }
     // finalize table tag
-    divContents.push('</table>');
+    divContents.push('</tbody></table>');
     // concatenate all results in divContents into a single string
     divContents = divContents.join('');
     
