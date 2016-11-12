@@ -72,11 +72,21 @@ function displayResultsFromJSON(result){
       var markerLat = parseFloat(result[i][1]);
       var markerLong = parseFloat(result[i][2]);
       var latLng = {lat: markerLat, lng: markerLong};
+      var contentString = result[i][0] + '<br>' + result[i][3] + " " +
+                          result[i][4] + '<br>' + result[i][5] + " " +
+                          result[i][6];
+      var infoWindow = new google.maps.InfoWindow({
+          content: contentString
+      });
       var marker = new google.maps.Marker({
           position: latLng,
           map: map,
           title: result[i][0]
         });
+      // Inside the loop we call bindInfoWindow passing it the marker,
+      // map, infoWindow and contentString
+      bindInfoWindow(marker, map, infoWindow, contentString);
+
       markers.push(marker);
     }
     // finalize table tag
@@ -105,6 +115,18 @@ function displayResultsFromJSON(result){
   $('#search-results').html(divContents);
 }    
 
+
+// This function is outside the for loop.
+// When a marker is clicked it closes any currently open infowindows
+// Sets the content for the new marker with the content passed through
+// then it open the infoWindow with the new content on the marker that's clicked
+function bindInfoWindow(marker, map, infoWindow, contentString) {
+      google.maps.event.addListener(marker, 'click', function () {
+          infoWindow.close();
+          infoWindow.setContent(contentString);
+          infoWindow.open(map, marker);
+      });
+  }
 
 
 function submitCoords(position) {
