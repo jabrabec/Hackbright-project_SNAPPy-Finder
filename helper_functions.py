@@ -8,7 +8,7 @@ def sql_query_by_coords(latitude, longitude, search_range, limit_to=20, offset_b
     sql_query = """SELECT name, lat, lng, address_1, address_2, city, state,
         zipcode, yelp_url, yelp_img, (3959*acos(cos(radians(:latitude))*cos(
         radians(lat))*cos(radians(lng)-radians(:longitude))+sin(radians(
-        :latitude))*sin(radians(lat)))) AS distance
+        :latitude))*sin(radians(lat)))) AS distance, yelp_id
     FROM retailers
     WHERE (3959*acos(cos(radians(:latitude))*cos(radians(lat))*cos(
         radians(lng)-radians(:longitude))+sin(radians(:latitude))*sin(

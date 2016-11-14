@@ -49,6 +49,7 @@ function displayResultsFromJSON(result){
                     '<th>Zipcode</th>' +
                     '<th>Distance (mi)</th>' +
                     '<th>Preview img</th>' +
+                    '<th>yelp ID</th>' +
                     '</tr></thead><tbody>';
     // add header row to divContents holding array
     divContents.push(headerRow);
@@ -64,7 +65,8 @@ function displayResultsFromJSON(result){
                       '</td><td>' + result[i][7] + 
                       '</td><td>' + result[i][10] + 
                       '</td><td><img class="preview-img" src="' + result[i][9] + 
-                      '"></tr>';
+                      '"</td><td>' + result[i][11] +
+                      '</td></tr>';
       // add this row to the divContents holding array
       divContents.push(tempString);
       
