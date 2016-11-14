@@ -62,7 +62,7 @@ function displayResultsFromJSON(result){
                       ' ' + result[i][7] +
                       '</td><td>' + result[i][10] + 
                       '</td><td><img class="preview-img" src="' + result[i][9] + 
-                      '"</td><td>' + result[i][11] +
+                      '"></td><td>' + result[i][11] +
                       '</td></tr>';
       // add this row to the divContents holding array
       divContents.push(tempString);
