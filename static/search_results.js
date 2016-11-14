@@ -53,7 +53,8 @@ function displayResultsFromJSON(result){
     // iterate over items in JSON-formatted results
     for (var i in result) {
       // create a temporary holding string to concatenate html for a single row
-      var tempString = '<tr><td><a href="' + result[i][8] + 
+      var tempString = '<tr data-toggle="collapse" data-target="#accordion' + i + 
+                      '" class="clickable"><td><a href="' + result[i][8] + 
                       '">'+ result[i][0] +
                       '</a></td><td>' + result[i][3] +
                       ' ' + result[i][4] +
@@ -63,7 +64,10 @@ function displayResultsFromJSON(result){
                       '</td><td>' + result[i][10] + 
                       '</td><td><img class="preview-img" src="' + result[i][9] + 
                       '"></td><td>' + result[i][11] +
-                      '</td></tr>';
+                      '</td></tr><tr>' +
+                      '<td colspan="5"><div id="accordion' + i +
+                      '" class="collapse"><h3>yelp reviews go here</h3>' +
+                      '</div></td></tr>';
       // add this row to the divContents holding array
       divContents.push(tempString);
       
