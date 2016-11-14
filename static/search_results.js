@@ -1,8 +1,9 @@
 "use strict";
 
-// create holding array for storing results; this will allow markers to be
-// removed upon repeated search requests
+// create holding array for storing results; this will allow markers and
+// infowindows to be removed upon repeated search requests or opening a new window
 var markers = [];
+var infoWindowArray = [];
 
 // Sets the map on all markers in the array.
 // Will only be used to clear existing markers from previous search.
@@ -86,7 +87,9 @@ function displayResultsFromJSON(result){
       // Inside the loop we call bindInfoWindow passing it the marker,
       // map, infoWindow and contentString
       bindInfoWindow(marker, map, infoWindow, contentString);
-
+      // add this respective marker & infowindow to holding array to enable
+      // clearing them later
+      infoWindowArray.push(infoWindow);
       markers.push(marker);
     }
     // finalize table tag
@@ -122,7 +125,9 @@ function displayResultsFromJSON(result){
 // then it open the infoWindow with the new content on the marker that's clicked
 function bindInfoWindow(marker, map, infoWindow, contentString) {
       google.maps.event.addListener(marker, 'click', function () {
-          infoWindow.close();
+        for (var i in infoWindowArray) {
+          infoWindowArray[i].close();
+          }
           infoWindow.setContent(contentString);
           infoWindow.open(map, marker);
       });
