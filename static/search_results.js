@@ -44,9 +44,6 @@ function displayResultsFromJSON(result){
                     '<tr>' +
                     '<th>Name</th>' +
                     '<th>Address</th>' +
-                    '<th>City</th>' +
-                    '<th>State</th>' +
-                    '<th>Zipcode</th>' +
                     '<th>Distance (mi)</th>' +
                     '<th>Preview img</th>' +
                     '<th>yelp ID</th>' +
@@ -60,9 +57,9 @@ function displayResultsFromJSON(result){
                       '">'+ result[i][0] +
                       '</a></td><td>' + result[i][3] +
                       ' ' + result[i][4] +
-                      '</td><td>' + result[i][5] + 
-                      '</td><td>' + result[i][6] + 
-                      '</td><td>' + result[i][7] + 
+                      '<br>' + result[i][5] +
+                      ', ' + result[i][6] +
+                      ' ' + result[i][7] +
                       '</td><td>' + result[i][10] + 
                       '</td><td><img class="preview-img" src="' + result[i][9] + 
                       '"</td><td>' + result[i][11] +
