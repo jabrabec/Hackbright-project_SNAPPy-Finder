@@ -1,7 +1,7 @@
 function displayYelpReviews(resultString) {
     var rowContents = [];
     yelpInformation = '<ul><img src="static/img/yelp-2c-outline.png"' +
-                    ' id="yelp-logo">Overall rating: ' +
+                    ' class="yelp-logo">Overall rating: ' +
                     resultString[1].rating +
                     ' out of 5 stars, with ' + resultString[1].review_count +
                     ' reviews.';
