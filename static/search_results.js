@@ -127,7 +127,8 @@ function displayResultsFromJSON(result){
     $('tbody tr').click(function(){
         var yelpID = $(this).find('.yelp-id').html();
         console.log(yelpID);
-        $.get('/search-yelp-reviews.json', yelpID, displayYelpReviews);
+        var params = {'yelpID': yelpID};
+        $.get('/search-yelp-reviews.json', params, displayYelpReviews);
     });
 });
 }    
