@@ -54,7 +54,8 @@ function displayResultsFromJSON(result){
     for (var i in result) {
       // create a temporary holding string to concatenate html for a single row
       var tempString = '<tr data-toggle="collapse" data-target="#accordion' + i + 
-                      '" class="clickable"><td><a href="' + result[i][8] + 
+                      '" class="clickable" id="table-row'+ i +
+                      '"><td><a href="' + result[i][8] + 
                       '">'+ result[i][0] +
                       '</a></td><td>' + result[i][3] +
                       ' ' + result[i][4] +
@@ -63,10 +64,11 @@ function displayResultsFromJSON(result){
                       ' ' + result[i][7] +
                       '</td><td>' + result[i][10] + 
                       '</td><td><img class="preview-img" src="' + result[i][9] + 
-                      '"></td><td>' + result[i][11] +
+                      '"></td><td class="yelp-id">' + result[i][11] +
                       '</td></tr><tr>' +
                       '<td colspan="5"><div id="accordion' + i +
-                      '" class="collapse"><h3>yelp reviews go here</h3>' +
+                      '" class="collapse"><div id="resultNum'+ i +
+                      '">yelp reviews go here</div>' +
                       '</div></td></tr>';
       // add this row to the divContents holding array
       divContents.push(tempString);
@@ -119,6 +121,15 @@ function displayResultsFromJSON(result){
   
   // update the contents on main page of div id="search-results"
   $('#search-results').html(divContents);
+  // set event listeners for sending Yelp Review API query when results rows are
+  // clicked
+  $(document).ready(function() {
+    $('tbody tr').click(function(){
+        var yelpID = $(this).find('.yelp-id').html();
+        console.log(yelpID);
+        $.get('/search-yelp-reviews.json', yelpID, displayYelpReviews);
+    });
+});
 }    
 
 

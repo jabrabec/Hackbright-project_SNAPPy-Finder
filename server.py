@@ -13,7 +13,7 @@ from model import (connect_to_db,
                    # Retailer, User, Favorite, db
                    )
 
-from helper_functions import sql_query_by_coords
+from helper_functions import sql_query_by_coords, query_yelp_reviews_by_id
 
 
 import os
@@ -84,6 +84,19 @@ def search_retailers_by_addr_json():
     retailers_list = sql_query_by_coords(latitude, longitude, search_range)
 
     return jsonify(retailers_list)
+
+
+@app.route('/search-yelp-reviews.json', methods=['GET'])
+def search_yelp_reviews_by_id():
+    """Search Yelp Reviews API by business ID."""
+
+    yelp_bus_id = request.args.get("yelpID")
+    print yelp_bus_id
+
+    reviews = query_yelp_reviews_by_id(yelp_bus_id)
+    print reviews
+
+    return jsonify(reviews)
 
 
 if __name__ == "__main__":

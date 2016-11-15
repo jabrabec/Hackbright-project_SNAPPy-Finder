@@ -34,3 +34,33 @@ def sql_query_by_coords(latitude, longitude, search_range, limit_to=20, offset_b
         item[10] = round(item[10], 3)
 
     return results_list
+
+
+from yelp.client import Client
+import json
+import requests
+import os
+
+
+def query_yelp_reviews_by_id(yelp_bus_id):
+
+    # set up Yelp Search API query
+    yelp_token = requests.post(
+        'https://api.yelp.com/oauth2/token',
+        data={'grant_type': 'client_credentials',
+              'client_id': os.environ['YELP_APP_ID'],
+              'client_secret': os.environ['YELP_APP_SECRET']})
+
+    url = 'https://api.yelp.com/v3/businesses/' + yelp_bus_id + '/reviews'
+
+    yelp_access_token = yelp_token.json()['access_token']
+
+    headers = {'Authorization': 'Bearer %s' % yelp_access_token}
+
+    # perform API call
+    yelp_search = requests.get(url=url, headers=headers)
+    # Convert API call results into JSON format
+    yelp_result = yelp_search.json()
+    print yelp_result
+
+    return yelp_result
