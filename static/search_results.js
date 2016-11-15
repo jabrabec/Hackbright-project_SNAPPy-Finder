@@ -67,8 +67,9 @@ function displayResultsFromJSON(result){
                       '"></td><td class="yelp-id">' + result[i][11] +
                       '</td></tr><tr>' +
                       '<td colspan="5"><div id="accordion' + i +
-                      '" class="collapse"><div id="resultNum'+ i +
-                      '">yelp reviews go here</div>' +
+                      '" class="collapse"><div id="'+ result[i][11] +
+                      '"><img src="static/img/yelp-2c-outline.png"' +
+                    ' id="yelp-logo"></div>' +
                       '</div></td></tr>';
       // add this row to the divContents holding array
       divContents.push(tempString);
