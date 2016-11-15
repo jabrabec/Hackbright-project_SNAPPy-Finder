@@ -61,7 +61,6 @@ def query_yelp_reviews_by_id(yelp_bus_id):
     yelp_reviews = requests.get(url=yelp_reviews_url, headers=headers)
     # Convert Reviews API call results into JSON format
     yelp_reviews = yelp_reviews.json()
-    print yelp_reviews
 
     # Perform Business Search API call to get overall rating
     overall_rating_url = 'https://api.yelp.com/v3/businesses/' + yelp_bus_id

@@ -91,10 +91,8 @@ def search_yelp_reviews_by_id():
     """Search Yelp Reviews API by business ID."""
 
     yelp_bus_id = request.args.get("yelpID")
-    print yelp_bus_id
 
     reviews = query_yelp_reviews_by_id(yelp_bus_id)
-    print reviews
 
     return jsonify(reviews)
 
