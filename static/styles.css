@@ -6,3 +6,6 @@ float: left;
 .preview-img {
 height: 100px;
 }
+.yelp-id {
+    display: none;
+}

@@ -1,5 +1,4 @@
-function displayYelpReviews(resultString1, resultString2) {
+function displayYelpReviews(resultString) {
     console.log('yelp results received:');
-    console.log(resultString1);
-    console.log(resultString2);
+    console.log(resultString);
 }

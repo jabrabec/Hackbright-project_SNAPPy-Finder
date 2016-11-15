@@ -46,7 +46,7 @@ function displayResultsFromJSON(result){
                     '<th>Address</th>' +
                     '<th>Distance (mi)</th>' +
                     '<th>Preview img</th>' +
-                    '<th>yelp ID</th>' +
+                    '<th class="yelp-id">yelp ID</th>' +
                     '</tr></thead><tbody>';
     // add header row to divContents holding array
     divContents.push(headerRow);
