@@ -72,7 +72,7 @@ function displayResultsFromJSON(result){
       // add this row to the divContents holding array
       divContents.push(tempString);
       
-      // Set up markers for each result and add them to map. ALso add them to
+      // Set up markers for each result and add them to map. Also add them to
       // markers array to be able to remove them later.
       var markerLat = parseFloat(result[i][1]);
       var markerLong = parseFloat(result[i][2]);
