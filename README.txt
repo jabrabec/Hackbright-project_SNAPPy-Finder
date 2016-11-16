@@ -7,7 +7,7 @@ SNAPPy Finder is a web application designed to help users find retailers near th
 	4. IN PROGRESS: Send search results to their mobile phone and/or email.
 
 Basic architecture:
-PostgreSQL DB ('snap') <--> server.py (Python: Flask/SQL Alchemy, Google Maps API) <--> client browser (Javascript [JQuery/AJAX, Google Maps API])
+PostgreSQL DB ('snap') <--> server.py (Python [Flask/SQL Alchemy], Google Maps API, Yelp Fusion API) <--> client browser (Javascript [JQuery/AJAX, Google Maps API])
 
 
 **REQUIREMENTS**
