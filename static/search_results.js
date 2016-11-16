@@ -125,10 +125,13 @@ function displayResultsFromJSON(result){
   $(document).ready(function() {
     $('tbody tr').click(function(){
         var yelpID = $(this).find('.yelp-id').html();
-        var params = {'yelpID': yelpID};
-        $.get('/search-yelp-reviews.json', params, displayYelpReviews);
-    });
-});
+        if( !$.trim( $('#' + yelpID).html() ).length ) {
+          console.log(yelpID + 'div is empty');
+          var params = {'yelpID': yelpID};
+          $.get('/search-yelp-reviews.json', params, displayYelpReviews);
+          }
+      });
+  });
 }    
 
 
