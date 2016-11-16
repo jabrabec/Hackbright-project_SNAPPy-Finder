@@ -81,14 +81,15 @@ class Favorite(db.Model):
 ##############################################################################
 # Helper functions
 
-def connect_to_db(app):
+def connect_to_db(app, db_uri="postgresql:///snap"):
     """Connect the database to our Flask app."""
 
     # Configure to use our test PostgreSQL database
     # testdb connection:
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///testdb'
     # live/snap db connection:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///snap'
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    # disable verbose sqlalchemy version information output:
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
