@@ -40,7 +40,7 @@ function displayResultsFromJSON(result){
   // perform the following only if 'results' has content:
   if (result[0]) {
     // create header row
-    var headerRow = '<h3>Results:</h3><table><thead>' +
+    var headerRow = '<h3>Results:</h3><table class="table-striped"><thead>' +
                     '<tr>' +
                     '<th>Name</th>' +
                     '<th>Address</th>' +
