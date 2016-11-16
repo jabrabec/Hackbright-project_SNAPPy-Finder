@@ -126,7 +126,6 @@ function displayResultsFromJSON(result){
     $('tbody tr').click(function(){
         var yelpID = $(this).find('.yelp-id').html();
         if( !$.trim( $('#' + yelpID).html() ).length ) {
-          console.log(yelpID + 'div is empty');
           var params = {'yelpID': yelpID};
           $.get('/search-yelp-reviews.json', params, displayYelpReviews);
           }
