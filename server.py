@@ -13,7 +13,9 @@ from model import (connect_to_db,
                    # Retailer, User, Favorite, db
                    )
 
-from helper_functions import sql_query_by_coords, query_yelp_reviews_by_id
+from helper_functions import (sql_query_by_coords,
+                              query_yelp_reviews_by_id,
+                              send_email)
 
 
 import os
