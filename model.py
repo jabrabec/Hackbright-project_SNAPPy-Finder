@@ -82,9 +82,9 @@ def example_data():
     """Create some sample data."""
 
     # In case this is run more than once, empty out existing data
-    # Retailer.query.delete()
-    # User.query.delete()
-    # Favorite.query.delete()
+    Retailer.query.delete()
+    User.query.delete()
+    Favorite.query.delete()
 
     # Add sample employees and departments
     qs = Retailer(name='Quik Stop Market 8003', lat=37.818584, lng=-122.253760,
