@@ -1,8 +1,9 @@
 import json
 import unittest
-from model import connect_to_db, db
+from model import connect_to_db, db, Retailer, User, Favorite, example_data
 from server import app
-import server
+# import server
+import seed
 
 
 class FlaskTestsBasic(unittest.TestCase):
@@ -39,10 +40,15 @@ class FlaskTestsDatabase(unittest.TestCase):
         # Connect to test database
         connect_to_db(app, "postgresql:///testdb")
 
+        # Create tables and add sample data
+        db.create_all()
+        example_data()
+
     def tearDown(self):
         """Do at end of every test."""
 
         db.session.close()
+        db.drop_all()
 
     def test_search_coords_json(self):
         '''Test that search_retailers_by_coords_json route returns correctly.'''
@@ -57,13 +63,31 @@ class FlaskTestsDatabase(unittest.TestCase):
     def test_search_addr_json(self):
         '''Test that search_retailers_by_addr_json route returns correctly.'''
 
-        # result = self.client.get('/search-address.json?street=150+santa+clara+ave&city=oakland&state=CA&searchRange=0.3')
         result = self.client.get('/search-address.json',
                                  query_string={'street': '150 santa clara ave',
                                                'city': 'oakland', 'state': 'CA',
                                                'searchRange': '0.3'})
 
         self.assertIn('''"Quik Stop Market 8003"''', result.data)
+
+    def test_dunder_repr(self):
+        '''Tests model.py for setting up and populating DB, and __repr__ statements.'''
+
+        retailer_result = Retailer.query.all()
+        self.assertIn('name=Quik Stop Market 8003', str(retailer_result))
+
+        user_result = User.query.all()
+        self.assertIn('email=hack@bright.com>', str(user_result))
+
+        favorite_result = Favorite.query.all()
+        self.assertIn('Favorite fav_id=', str(favorite_result))
+
+    def test_db_seed(self):
+        '''Tests seed.py for populating db.'''
+
+        seed.load_retailers()
+        retailer_result = Retailer.query.all()
+        self.assertIn('name=Quik Stop Market 8003', str(retailer_result))
 
 
 if __name__ == "__main__":

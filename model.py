@@ -78,16 +78,41 @@ class Favorite(db.Model):
             self.fav_id, self.retailer_id, self.user_id)
 
 
+def example_data():
+    """Create some sample data."""
+
+    # In case this is run more than once, empty out existing data
+    # Retailer.query.delete()
+    # User.query.delete()
+    # Favorite.query.delete()
+
+    # Add sample employees and departments
+    qs = Retailer(name='Quik Stop Market 8003', lat=37.818584, lng=-122.253760,
+                  address_1='66 Macarthur Blvd', city='Oakland', state='CA', zipcode=94610,
+                  county='ALAMEDA', yelp_id='quik-stop-oakland-2',
+                  yelp_url='https://www.yelp.com/biz/quik-stop-oakland-2',
+                  yelp_img='https://s3-media2.fl.yelpcdn.com/bphoto/osfaPtXy_GIl7gpK5thnZw/o.jpg')
+    mm = Retailer(name='Market Mayflower & Deli', lat=37.789536, lng=-122.413430,
+                  address_1='985 Bush St', city='San Francisco', state='CA',
+                  zipcode=94109, county='SAN FRANCISCO',
+                  yelp_id='market-mayflower-and-deli-san-francisco',
+                  yelp_url='https://www.yelp.com/biz/market-mayflower-and-deli-san-francisco',
+                  yelp_img='https://s3-media1.fl.yelpcdn.com/bphoto/mekkXctsflvuxgJBIM-1Ow/o.jpg')
+    test_user = User(first_name='Hack', last_name='Bright',
+                     email='hack@bright.com', password='password')
+    test_fave = Favorite(retailer_id=1, user_id=1)
+
+    db.session.add_all([qs, mm, test_user, test_fave])
+    db.session.commit()
+
+
 ##############################################################################
 # Helper functions
 
 def connect_to_db(app, db_uri="postgresql:///snap"):
     """Connect the database to our Flask app."""
 
-    # Configure to use our test PostgreSQL database
-    # testdb connection:
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///testdb'
-    # live/snap db connection:
+    # live/snap db connection is set with default db_uri parameter:
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     # disable verbose sqlalchemy version information output:
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
