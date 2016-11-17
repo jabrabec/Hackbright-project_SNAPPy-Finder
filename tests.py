@@ -2,8 +2,6 @@ import json
 import unittest
 from model import connect_to_db, db, Retailer, User, Favorite, example_data
 from server import app
-# import server
-import seed
 
 
 class FlaskTestsBasic(unittest.TestCase):
@@ -81,13 +79,6 @@ class FlaskTestsDatabase(unittest.TestCase):
 
         favorite_result = Favorite.query.all()
         self.assertIn('Favorite fav_id=', str(favorite_result))
-
-    def test_db_seed(self):
-        '''Tests seed.py for populating db.'''
-
-        seed.load_retailers()
-        retailer_result = Retailer.query.all()
-        self.assertIn('name=Quik Stop Market 8003', str(retailer_result))
 
 
 if __name__ == "__main__":
