@@ -88,6 +88,21 @@ def search_retailers_by_addr_json():
     return jsonify(retailers_list)
 
 
+@app.route('/send-mail', methods=['POST'])
+def send_email_to_user():
+    """Search DB for a list of results given an address by user."""
+
+    recipient = request.form.get("recipient")
+    subject = 'Search Result from SNAPPy Finder'
+    yelp_bus_id = request.form.get("yelpID")
+    body = '''Find information on your selected retailer at:
+              https://www.yelp.com/biz/%s''' % (yelp_bus_id)
+
+    success_result = send_email(recipient, subject, body)
+
+    return success_result
+
+
 @app.route('/search-yelp-reviews.json', methods=['GET'])
 def search_yelp_reviews_by_id():
     """Search Yelp Reviews API by business ID."""

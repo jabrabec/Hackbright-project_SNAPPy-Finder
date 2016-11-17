@@ -26,6 +26,19 @@ class FlaskTestsBasic(unittest.TestCase):
 
         self.assertIn('"id": "market-mayflower-and-deli-san-francisco"', result.data)
 
+    def test_mail(self):
+        '''Test that send_mail route works correctly'''
+
+        recipient = 'snappyfinder@gmail.com'
+        subject = 'testing flask mail route'
+        body = 'testing flask mail route'
+
+        result = self.client.post('/send-mail', data={'recipient': recipient,
+                                                      'subject': subject,
+                                                      'body': body})
+
+        self.assertIn('successfully sent mail to %s\n' % (recipient), result.data)
+
 
 class FlaskTestsDatabase(unittest.TestCase):
     """Test route responses with database."""
