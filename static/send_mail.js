@@ -1,12 +1,8 @@
 function sendEmail(evt) {
     evt.preventDefault();
 
-    var yelpID = $(this).data('yelpID');
-    // var yelpID = $(this).dataset.yelpID;
-    // var yelpID = $(this).find('.yelp-id').html();
-    console.log(yelpID);
+    var yelpID = $(this).data()['yelpid'];
     var recipient = window.prompt("Please enter your email: ");
-    console.log(recipient);
     if (recipient) {
         recipient = recipient.trim();
     }

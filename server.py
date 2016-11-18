@@ -95,8 +95,8 @@ def send_email_to_user():
     recipient = request.form.get("recipient")
     subject = 'Search Result from SNAPPy Finder'
     yelp_bus_id = request.form.get("yelpID")
-    body = '''Find information on your selected retailer at:
-              https://www.yelp.com/biz/%s''' % (yelp_bus_id)
+    body = '''Find information on your selected retailer at:\n
+    https://www.yelp.com/biz/%s''' % (yelp_bus_id)
 
     success_result = send_email(recipient, subject, body)
 
