@@ -27,7 +27,7 @@ function deleteMarkers() {
   markers = [];
 }
 
-function displayResultsFromJSON(result){
+function displayResultsFromJSON(result) {
   // This clears out the div in case there were previous search results.
   $('#search-results').empty();
 
@@ -47,6 +47,7 @@ function displayResultsFromJSON(result){
                     '<th>Distance (mi)</th>' +
                     '<th>Preview img</th>' +
                     '<th class="yelp-id">yelp ID</th>' +
+                    '<th>user actions</th>' +
                     '</tr></thead><tbody>';
     // add header row to divContents holding array
     divContents.push(headerRow);
@@ -65,7 +66,9 @@ function displayResultsFromJSON(result){
                       '</td><td>' + result[i][10] + 
                       '</td><td><img class="preview-img" src="' + result[i][9] + 
                       '"></td><td class="yelp-id">' + result[i][11] +
-                      '</td></tr><tr>' +
+                      '</td><td><a href="#" data-yelpID="' + result[i][11] +
+                      '"><img src="static/img/email_icon.png"' +
+                      'class="icons send-mail"></a></td></tr><tr>' +
                       '<td colspan="5"><div id="accordion' + i +
                       '" class="collapse"><div id="'+ result[i][11] +
                       '"></div></div></td></tr>';
@@ -130,9 +133,10 @@ function displayResultsFromJSON(result){
           $.get('/search-yelp-reviews.json', params, displayYelpReviews);
           }
       });
+    // add event listener for email icon click
+    $('.send-mail').click(sendEmail);
   });
-}    
-
+}
 
 // This function is outside the for loop.
 // When a marker is clicked it closes any currently open infowindows
