@@ -37,7 +37,8 @@ Server-side:
 	a. GMAPS_API_KEY
 	b. YELP_APP_ID
 	c. YELP_APP_SECRET
-	d. FLASK_KEY (only required if sessions and the Flask debug toolbar)
+	d. FLASK_KEY (only required if using sessions and the Flask debug toolbar)
+	e. MAIL_PASSWORD
 
 	(env) $ source secrets.sh
 
