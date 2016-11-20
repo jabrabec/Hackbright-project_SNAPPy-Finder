@@ -1,14 +1,10 @@
 #map {
 height: 600px;
 width: 600px;
-/*float: left;*/
 }
 .preview-img {
 height: 100px;
 }
-/*.yelp-id {
-    display: none;
-}*/
 .yelp-logo {
     height: 50px;
 }

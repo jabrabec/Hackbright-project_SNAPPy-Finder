@@ -46,7 +46,6 @@ function displayResultsFromJSON(result) {
                     '<th>Address</th>' +
                     '<th>Distance (mi)</th>' +
                     '<th>Preview img</th>' +
-                    // '<th class="yelp-id">yelp ID</th>' +
                     '<th>user actions</th>' +
                     '</tr></thead><tbody>';
     // add header row to divContents holding array
@@ -66,7 +65,6 @@ function displayResultsFromJSON(result) {
                       '</td><td>' + result[i][10] + 
                       '</td><td><img class="preview-img" src="' + result[i][9] + 
                       '"></td>' + 
-                      // '<td class="yelp-id">' + result[i][11] +'</td>' +
                       '<td><a href="#" ><img src="static/img/email_icon.png"' +
                       'class="icons send-mail" data-yelpid="' + result[i][11] +
                       '"></a></td></tr><tr>' +
@@ -128,7 +126,6 @@ function displayResultsFromJSON(result) {
   // clicked
   $(document).ready(function() {
     $('tbody tr').click(function(){
-        // var yelpID = $(this).find('.yelp-id').html();
         var yelpID = $(this).data()['yelpid'];
         if( !$.trim( $('#' + yelpID).html() ).length ) {
           var params = {'yelpID': yelpID};
