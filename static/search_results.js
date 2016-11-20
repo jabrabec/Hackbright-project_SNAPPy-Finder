@@ -46,7 +46,7 @@ function displayResultsFromJSON(result) {
                     '<th>Address</th>' +
                     '<th>Distance (mi)</th>' +
                     '<th>Preview img</th>' +
-                    '<th class="yelp-id">yelp ID</th>' +
+                    // '<th class="yelp-id">yelp ID</th>' +
                     '<th>user actions</th>' +
                     '</tr></thead><tbody>';
     // add header row to divContents holding array
@@ -55,9 +55,9 @@ function displayResultsFromJSON(result) {
     for (var i in result) {
       // create a temporary holding string to concatenate html for a single row
       var tempString = '<tr data-toggle="collapse" data-target="#accordion' + i + 
-                      '" class="clickable" id="table-row'+ i +
-                      '"><td><a href="' + result[i][8] + 
-                      '">'+ result[i][0] +
+                      '" class="clickable" id="table-row' + i +
+                      '" data-yelpid="' + result[i][11] + '"><td><a href="' +
+                      result[i][8] + '">'+ result[i][0] +
                       '</a></td><td>' + result[i][3] +
                       ' ' + result[i][4] +
                       '<br>' + result[i][5] +
@@ -65,8 +65,9 @@ function displayResultsFromJSON(result) {
                       ' ' + result[i][7] +
                       '</td><td>' + result[i][10] + 
                       '</td><td><img class="preview-img" src="' + result[i][9] + 
-                      '"></td><td class="yelp-id">' + result[i][11] +
-                      '</td><td><a href="#" ><img src="static/img/email_icon.png"' +
+                      '"></td>' + 
+                      // '<td class="yelp-id">' + result[i][11] +'</td>' +
+                      '<td><a href="#" ><img src="static/img/email_icon.png"' +
                       'class="icons send-mail" data-yelpid="' + result[i][11] +
                       '"></a></td></tr><tr>' +
                       '<td colspan="5"><div id="accordion' + i +
@@ -127,7 +128,8 @@ function displayResultsFromJSON(result) {
   // clicked
   $(document).ready(function() {
     $('tbody tr').click(function(){
-        var yelpID = $(this).find('.yelp-id').html();
+        // var yelpID = $(this).find('.yelp-id').html();
+        var yelpID = $(this).data()['yelpid'];
         if( !$.trim( $('#' + yelpID).html() ).length ) {
           var params = {'yelpID': yelpID};
           $.get('/search-yelp-reviews.json', params, displayYelpReviews);
