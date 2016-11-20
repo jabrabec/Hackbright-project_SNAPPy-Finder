@@ -65,7 +65,8 @@ function displayResultsFromJSON(result) {
                       '</td><td>' + result[i][10] + 
                       '</td><td><img class="preview-img" src="' + result[i][9] + 
                       '"></td>' + 
-                      '<td><a href="#" ><img src="static/img/email_icon.png"' +
+                      '<td id="td-' + result[i][11] +
+                      '"><a href="#" ><img src="static/img/email_icon.png"' +
                       'class="icons send-mail" data-yelpid="' + result[i][11] +
                       '"></a></td></tr><tr>' +
                       '<td colspan="5"><div id="accordion' + i +
@@ -133,7 +134,8 @@ function displayResultsFromJSON(result) {
           }
       });
     // add event listener for email icon click
-    $('.send-mail').click(sendEmail);
+    // $('.send-mail').click(sendEmail);
+    $('.send-mail').click(getEmail);
   });
 }
 
