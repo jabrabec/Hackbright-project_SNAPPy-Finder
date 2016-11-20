@@ -16,7 +16,7 @@ function getEmail(evt) {
     console.log(yelpID);
     $('#td-' + yelpID).append('<div id="email-form"><form action="#" \
                                 method="POST"><input type="text" id="email" \
-                                value="email@domain.com" required><input \
+                                placeholder="email@domain.com" required><input \
                                 type="submit" value="Send" id="submit-email"> \
                                 </form></div>');
     // var recipient = $('#email').val();
