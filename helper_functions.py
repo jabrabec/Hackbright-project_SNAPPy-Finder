@@ -36,7 +36,7 @@ def sql_query_by_coords(latitude, longitude, search_range, limit_to=20, offset_b
     return results_list
 
 
-from yelp.client import Client
+# from yelp.client import Client
 import json
 import requests
 import os
