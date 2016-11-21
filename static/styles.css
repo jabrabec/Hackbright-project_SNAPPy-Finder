@@ -11,3 +11,9 @@ height: 100px;
 .icons {
 height: 20px;
 }
+.incorrect-input{
+    display: none;
+}
+.incorrect-input.revealed{
+    display: inline;
+}
