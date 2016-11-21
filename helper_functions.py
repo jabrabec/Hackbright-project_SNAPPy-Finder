@@ -124,6 +124,8 @@ def send_sms(recipient, body):
     messages = client.messages.list()
 
     status = messages[0].status
+    confirmed_recd = messages[0].to
+    confirmed_body = messages[0].body
 
-    print '\n\tSMS to %s, status: %s\n' % (recipient, status)
-    return '\n\tSMS to %s, status: %s\n' % (recipient, status)
+    print '\n\tSMS to %s, status: %s, body: %s\n' % (confirmed_recd, status, confirmed_body)
+    return 'SMS to %s, status: %s' % (confirmed_recd, confirmed_body)

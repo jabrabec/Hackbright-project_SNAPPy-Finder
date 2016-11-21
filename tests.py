@@ -43,13 +43,13 @@ class FlaskTestsBasic(unittest.TestCase):
     def test_sms(self):
         '''Test that send_sms route works correctly'''
 
-        recipient = os.environ['PRIVATE_NUMBER']
+        recipient = "+" + os.environ['PRIVATE_NUMBER']
         body = 'testing flask sms route'
 
         result = self.client.post('/send-sms', data={'recipient': recipient,
                                                      'body': body})
 
-        self.assertIn('\n\tSMS to %s, status:' % (recipient), result.data)
+        self.assertIn('SMS to %s, status:' % (recipient), result.data)
 
 
 class FlaskTestsDatabase(unittest.TestCase):
