@@ -5,8 +5,8 @@ function getEmail(evt) {
     $('#td-' + yelpID).append('<div id="email-form"><form action="#" \
                                 method="POST"><input type="text" id="email" \
                                 placeholder="email@domain.com" required><input \
-                                type="submit" value="Send" id="submit-email"> \
-                                </form></div>');
+                                type="submit" value="Send" \
+                                id="submit-email"></form></div>');
     $('#email').focus();
     $('#submit-email').click( function(evt){
         evt.preventDefault();
@@ -17,5 +17,9 @@ function getEmail(evt) {
 function sendEmail(yelpID) {
     var recipient = $('#email').val();
     var params = {'yelpID': yelpID, 'recipient': recipient};
-    $.post('/send-mail', params);
+    $.post('/send-mail', params, processResponse);
+}
+
+function processResponse(success_result) {
+    $('#email-form').html(success_result);
 }
