@@ -1,6 +1,6 @@
 """Query Yelp API for business ID, URL, and preview IMG, and add to DB"""
 
-from yelp.client import Client
+# from yelp.client import Client
 import json
 import requests
 import os
