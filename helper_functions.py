@@ -128,4 +128,4 @@ def send_sms(recipient, body):
     confirmed_body = messages[0].body
 
     print '\n\tSMS to %s, status: %s, body: %s\n' % (confirmed_recd, status, confirmed_body)
-    return 'SMS to %s, status: %s' % (confirmed_recd, confirmed_body)
+    return 'SMS to %s, status: %s' % (confirmed_recd, status)

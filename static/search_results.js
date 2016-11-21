@@ -68,6 +68,8 @@ function displayResultsFromJSON(result) {
                       '<td id="td-' + result[i][11] +
                       '"><a href="#" ><img src="static/img/email_icon.png"' +
                       'class="icons send-mail" data-yelpid="' + result[i][11] +
+                      '"></a><a href="#" ><img src="static/img/mobile_message-512.png"' +
+                      'class="icons send-sms" data-yelpid="' + result[i][11] +
                       '"></a></td></tr><tr>' +
                       '<td colspan="5"><div id="accordion' + i +
                       '" class="collapse"><div id="'+ result[i][11] +
@@ -133,9 +135,9 @@ function displayResultsFromJSON(result) {
           $.get('/search-yelp-reviews.json', params, displayYelpReviews);
           }
       });
-    // add event listener for email icon click
-    // $('.send-mail').click(sendEmail);
+    // add event listener for click on email & phone icons
     $('.send-mail').click(getEmail);
+    $('.send-sms').click(getPhone);
   });
 }
 

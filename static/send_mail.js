@@ -22,5 +22,5 @@ function sendEmail(yelpID) {
 }
 
 function processResponse(success_result) {
-    $('#email-form').html(success_result).fadeOut(3000);
+    $('#email-form').html(success_result).fadeOut(5000);
 }
