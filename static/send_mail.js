@@ -18,6 +18,7 @@ function sendEmail(yelpID) {
     var recipient = $('#email').val();
     var params = {'yelpID': yelpID, 'recipient': recipient};
     $.post('/send-mail', params, processResponse);
+    $('#email-form').html("Sending message...");
 }
 
 function processResponse(success_result) {
