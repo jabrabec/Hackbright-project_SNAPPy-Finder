@@ -18,14 +18,12 @@ function getPhone(evt) {
             sendSMS(yelpID, recipient);
             $('#sms-form .incorrect-input').removeClass("revealed");
         } else {
-            // $('#sms-form').append("Please input exactly 11 digits.");
             $('#sms-form .incorrect-input').addClass("revealed");
         }
     });
 }
 
 function sendSMS(yelpID, recipient) {
-    // var recipient = $('#sms').val();
     var params = {'yelpID': yelpID, 'recipient': recipient};
     $.post('/send-sms', params, processSMSResponse);
     $('#sms-form').html("Sending message...");
