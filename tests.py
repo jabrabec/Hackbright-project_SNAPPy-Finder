@@ -2,6 +2,7 @@ import json
 import unittest
 from model import connect_to_db, db, Retailer, User, Favorite, example_data
 from server import app
+import os
 
 
 class FlaskTestsBasic(unittest.TestCase):
@@ -38,6 +39,17 @@ class FlaskTestsBasic(unittest.TestCase):
                                                       'body': body})
 
         self.assertIn('Successfully sent mail to %s\n' % (recipient), result.data)
+
+    def test_sms(self):
+        '''Test that send_sms route works correctly'''
+
+        recipient = os.environ['PRIVATE_NUMBER']
+        body = 'testing flask sms route'
+
+        result = self.client.post('/send-sms', data={'recipient': recipient,
+                                                     'body': body})
+
+        self.assertIn('\n\tSMS to %s, status:' % (recipient), result.data)
 
 
 class FlaskTestsDatabase(unittest.TestCase):

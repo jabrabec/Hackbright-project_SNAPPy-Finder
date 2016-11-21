@@ -108,3 +108,22 @@ def send_email(recipient, subject, body):
     except:
         print '\n\tFailed to send mail to %s\n' % (recipient)
         return '\n\tFailed to send mail to %s\n' % (recipient)
+
+
+def send_sms(recipient, body):
+    from twilio.rest import TwilioRestClient
+
+    ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
+    AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
+    client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
+
+    to_number = "+%s" % (recipient)
+
+    client.messages.create(to=to_number, from_="+15107579976", body=body)
+
+    messages = client.messages.list()
+
+    status = messages[0].status
+
+    print '\n\tSMS to %s, status: %s\n' % (recipient, status)
+    return '\n\tSMS to %s, status: %s\n' % (recipient, status)

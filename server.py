@@ -15,7 +15,8 @@ from model import (connect_to_db,
 
 from helper_functions import (sql_query_by_coords,
                               query_yelp_reviews_by_id,
-                              send_email)
+                              send_email,
+                              send_sms)
 
 
 import os
@@ -90,7 +91,7 @@ def search_retailers_by_addr_json():
 
 @app.route('/send-mail', methods=['POST'])
 def send_email_to_user():
-    """Search DB for a list of results given an address by user."""
+    """Send an email to user with a link to the selected Yelp listing."""
 
     recipient = request.form.get("recipient")
     subject = 'Search Result from SNAPPy Finder'
@@ -99,6 +100,20 @@ def send_email_to_user():
     https://www.yelp.com/biz/%s''' % (yelp_bus_id)
 
     success_result = send_email(recipient, subject, body)
+
+    return success_result
+
+
+@app.route('/send-sms', methods=['POST'])
+def send_sms_to_user():
+    """Send an SMS to user with a link to the selected Yelp listing."""
+
+    recipient = request.form.get("recipient")
+    yelp_bus_id = request.form.get("yelpID")
+    body = '''Find information on your selected retailer at:
+    https://m.yelp.com/biz/%s''' % (yelp_bus_id)
+
+    success_result = send_sms(recipient, body)
 
     return success_result
 
