@@ -17,10 +17,10 @@ function getEmail(evt) {
 function sendEmail(yelpID) {
     var recipient = $('#email' + yelpID).val();
     var params = {'yelpID': yelpID, 'recipient': recipient};
-    $.post('/send-mail', params, processResponse);
+    $.post('/send-mail', params, processMailResponse);
     $('#email-form' + yelpID).html("Sending message...");
 }
 
-function processResponse(result) {
+function processMailResponse(result) {
     $('#email-form' + result.yelpID).html(result.success_result).fadeOut(3000);
 }
