@@ -23,5 +23,5 @@ function sendSMS(yelpID) {
 }
 
 function processSMSResponse(success_result) {
-    $('#sms-form').html(success_result).fadeOut(3000);
+    $('#sms-form').html(success_result).fadeOut(5000);
 }
