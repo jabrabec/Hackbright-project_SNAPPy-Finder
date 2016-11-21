@@ -103,8 +103,8 @@ def send_email(recipient, subject, body):
         server_ssl.sendmail(FROM, TO, message)
         #server_ssl.quit()
         server_ssl.close()
-        print '\n\tsuccessfully sent mail to %s\n' % (recipient)
-        return '\n\tsuccessfully sent mail to %s\n' % (recipient)
+        print '\n\tSuccessfully sent mail to %s\n' % (recipient)
+        return '\n\tSuccessfully sent mail to %s\n' % (recipient)
     except:
-        print '\n\tfailed to send mail to %s\n' % (recipient)
-        return '\n\tfailed to send mail to %s\n' % (recipient)
+        print '\n\tFailed to send mail to %s\n' % (recipient)
+        return '\n\tFailed to send mail to %s\n' % (recipient)
