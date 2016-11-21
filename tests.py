@@ -37,7 +37,7 @@ class FlaskTestsBasic(unittest.TestCase):
                                                       'subject': subject,
                                                       'body': body})
 
-        self.assertIn('successfully sent mail to %s\n' % (recipient), result.data)
+        self.assertIn('Successfully sent mail to %s\n' % (recipient), result.data)
 
 
 class FlaskTestsDatabase(unittest.TestCase):
