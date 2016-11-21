@@ -21,6 +21,6 @@ function sendEmail(yelpID) {
     $('#email-form' + yelpID).html("Sending message...");
 }
 
-function processResponse(success_result) {
-    $('#email-form' + yelpID).html(success_result).fadeOut(3000);
+function processResponse(result) {
+    $('#email-form' + result.yelpID).html(result.success_result).fadeOut(3000);
 }

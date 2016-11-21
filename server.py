@@ -100,8 +100,9 @@ def send_email_to_user():
     https://www.yelp.com/biz/%s''' % (yelp_bus_id)
 
     success_result = send_email(recipient, subject, body)
+    results_dict = {'yelpID': yelp_bus_id, 'success_result': success_result}
 
-    return success_result
+    return jsonify(results_dict)
 
 
 @app.route('/send-sms', methods=['POST'])
