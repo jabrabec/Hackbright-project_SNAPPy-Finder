@@ -24,5 +24,6 @@ function displayYelpReviews(resultString) {
         }
     rowContents.push('</ul>');
     rowContents = rowContents.join('');
+    $("#row-" + resultString[1].id).removeClass("hidden-row");
     $("#" + resultString[1].id).html(rowContents);
 }

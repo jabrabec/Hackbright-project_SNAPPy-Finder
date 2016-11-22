@@ -41,7 +41,7 @@ function displayResultsFromJSON(result) {
   if (result[0]) {
     // create header row
     var headerRow = '<h3>Results:</h3><p>Click on any row for more ' +
-                    'information.</p><table class="table-striped"><thead>' +
+                    'information.</p><table class="table-bordered"><thead>' +
                     '<tr>' +
                     '<th>Name</th>' +
                     '<th>Address</th>' +
@@ -71,7 +71,8 @@ function displayResultsFromJSON(result) {
                       'class="icons send-mail" data-yelpid="' + result[i][11] +
                       '"></a><a href="#" ><img src="static/img/mobile_message-512.png"' +
                       'class="icons send-sms" data-yelpid="' + result[i][11] +
-                      '"></a></td></tr><tr>' +
+                      '"></a></td></tr><tr id="row-'+ result[i][11] +
+                      ' class="review-row hidden-row">' +
                       '<td colspan="5"><div id="accordion' + i +
                       '" class="collapse"><div id="'+ result[i][11] +
                       '"></div></div></td></tr>';
