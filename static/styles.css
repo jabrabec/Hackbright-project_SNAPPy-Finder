@@ -25,7 +25,7 @@ height: 20px;
   cursor: hand;
 }
 .stars {
-  background: transparent url(static/img/stars_map.png) no-repeat;
+  background: transparent url(img/stars_map.png) no-repeat;
 }
 .rating {
   font-size: 0;
