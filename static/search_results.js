@@ -72,7 +72,7 @@ function displayResultsFromJSON(result) {
                       '"></a><a href="#" ><img src="static/img/mobile_message-512.png"' +
                       'class="icons send-sms" data-yelpid="' + result[i][11] +
                       '"></a></td></tr><tr id="row-'+ result[i][11] +
-                      ' class="review-row hidden-row">' +
+                      '" class="review-row hidden-row">' +
                       '<td colspan="5"><div id="accordion' + i +
                       '" class="collapse"><div id="'+ result[i][11] +
                       '"></div></div></td></tr>';
@@ -133,6 +133,8 @@ function displayResultsFromJSON(result) {
     $('tbody tr').click(function(){
         var yelpID = $(this).data()['yelpid'];
         if( !$.trim( $('#' + yelpID).html() ).length ) {
+          $("#row-" + yelpID).removeClass("hidden-row");
+          $("#" + yelpID).html("Loading...");
           var params = {'yelpID': yelpID};
           $.get('/search-yelp-reviews.json', params, displayYelpReviews);
           }

@@ -5,8 +5,6 @@ function displayYelpReviews(resultString) {
     // instead of periods; e.g. 3.5 --> 3.5
     // for use in applying class to overall business rating for styling purposes.
     var ratingClass = resultString[1].rating.toString().replace(/\./, '-');
-    console.log(ratingClass);
-    console.log(resultString[1].id);
 
     yelpInformation = '<ul><span class="rating r' + ratingClass +
                     ' stars">' + resultString[1].rating + ' of 5</span>' +
@@ -24,6 +22,6 @@ function displayYelpReviews(resultString) {
         }
     rowContents.push('</ul>');
     rowContents = rowContents.join('');
-    $("#row-" + resultString[1].id).removeClass("hidden-row");
+    // $("#row-" + resultString[1].id).removeClass("hidden-row");
     $("#" + resultString[1].id).html(rowContents);
 }
