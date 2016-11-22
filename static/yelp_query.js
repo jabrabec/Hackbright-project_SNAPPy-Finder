@@ -1,10 +1,11 @@
 function displayYelpReviews(resultString) {
     var rowContents = [];
-    // conversion of rating values like 3.5 to 3-5 in progress
-    // var reviewRating = resultString[1].rating;
-    // console.log("review rating is: " + reviewRating);
-    // var ratingClass = reviewRating.replace('.', '-');
-    // console.log("rating class is: " + ratingClass);
+
+    // convert half-star numeric ratings to string-type ratings with dashes
+    // instead of periods; e.g. 3.5 --> 3.5
+    // for use in applying class to overall business rating for styling purposes.
+    var ratingClass = resultString[1].rating.toString().replace(/\./, '-');
+
     yelpInformation = '<ul><img src="static/img/yelp-2c-outline.png"' +
                     ' class="yelp-logo">Overall rating: ' +
                     resultString[1].rating +
