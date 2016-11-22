@@ -20,6 +20,10 @@ height: 20px;
 #disclaimer{
     font-style: italic;
 }
+.clickable {
+  cursor: pointer;
+  cursor: hand;
+}
 .stars {
   background: transparent url(static/img/stars_map.png) no-repeat;
 }
