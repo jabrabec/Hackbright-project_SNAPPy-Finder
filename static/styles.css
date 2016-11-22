@@ -48,3 +48,7 @@ height: 20px;
 .r4 { background-position: 0px -126px; }
 .r4-5 { background-position: 0px -144px; }
 .r5 { background-position: 0px -162px; }
+
+#hidden-loading-icon {
+  display: none;
+}

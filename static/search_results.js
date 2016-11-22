@@ -130,14 +130,14 @@ function displayResultsFromJSON(result) {
   // set event listeners for sending Yelp Review API query when results rows are
   // clicked
   $(document).ready(function() {
-    $('tbody tr').click(function(){
-        var yelpID = $(this).data()['yelpid'];
-        if( !$.trim( $('#' + yelpID).html() ).length ) {
-          $("#row-" + yelpID).removeClass("hidden-row");
-          $("#" + yelpID).html("Loading...");
-          var params = {'yelpID': yelpID};
-          $.get('/search-yelp-reviews.json', params, displayYelpReviews);
-          }
+    $('tbody tr').click(function() {
+      var yelpID = $(this).data()['yelpid'];
+      if( !$.trim( $('#' + yelpID).html() ).length ) {
+        $("#row-" + yelpID).removeClass("hidden-row");
+        $("#" + yelpID).html('<div>Loading...<img src="static/img/ajax-loader.gif"></div>');
+        var params = {'yelpID': yelpID};
+        $.get('/search-yelp-reviews.json', params, displayYelpReviews);
+        }
       });
     // add event listener for click on email & phone icons
     $('.send-mail').click(getEmail);
