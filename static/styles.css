@@ -20,3 +20,24 @@ height: 20px;
 #disclaimer{
     font-style: italic;
 }
+.stars {
+  background: transparent url(static/img/stars_map.png) no-repeat;
+}
+.rating {
+  font-size: 0;
+  height: 18px;
+  overflow: hidden;
+  vertical-align: middle;
+  width: 96px;
+  display: block;
+}
+.r0 { background-position: 0px 0px; }
+.r1 { background-position: 0px -18px; }
+.r1-5 { background-position: 0px -36px; }
+.r2 { background-position: 0px -54px; }
+.r2-5 { background-position: 0px -72px; }
+.r3 { background-position: 0px -90px; }
+.r3-5 { background-position: 0px -108px; }
+.r4 { background-position: 0px -126px; }
+.r4-5 { background-position: 0px -144px; }
+.r5 { background-position: 0px -162px; }
