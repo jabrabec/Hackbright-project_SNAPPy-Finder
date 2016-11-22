@@ -27,7 +27,7 @@
     <form action="#" method="GET" id="address-entry">
       Street: <input type="text" id="street" required>
       City: <input type="text" id="city" required>
-      State (abbrev.): <input type="text" id="state" maxlength="2" required>
+      State*: <input type="text" id="state" maxlength="2" value="CA" disabled required>
       Search range:
         <select name="search-range" id="addr-search-range" required>
           <option value="0.1">0.1 miles</option>
@@ -42,6 +42,7 @@
         </select>
       <input type="submit" value="Search!" id="addr-search">
     </form>
+    <span id="disclaimer">*Search is currently only available in California.</span>
   </div>
 </div>
 

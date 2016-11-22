@@ -17,3 +17,6 @@ height: 20px;
 .incorrect-input.revealed{
     display: inline;
 }
+#disclaimer{
+    font-style: italic;
+}
