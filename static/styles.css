@@ -25,7 +25,7 @@ height: 20px;
   cursor: hand;
 }
 .hidden-row {
-  display:none;
+  display: none;
 }
 .stars {
   background: transparent url(img/stars_map.png) no-repeat;
