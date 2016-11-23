@@ -10,8 +10,8 @@ function displayYelpReviews(resultString) {
                     ' stars">' + resultString[1].rating + ' of 5</span>' +
                     'based on ' + resultString[1].review_count +
                     ' reviews on <a href="https://www.yelp.com/biz/' +
-                    resultString[1].id + '"><img src="static/img/yelp-2c-outline.png"' +
-                    ' class="yelp-logo"></a>';
+                    resultString[1].id + '" target="_blank"><img' +
+                    ' src="static/img/yelp-2c-outline.png" class="yelp-logo"></a>';
     rowContents.push(yelpInformation);
     for (var i in resultString[0].reviews) {
         var reviewString = '<li>' + resultString[0].reviews[i].rating +

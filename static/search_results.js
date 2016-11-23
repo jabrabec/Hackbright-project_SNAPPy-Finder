@@ -57,7 +57,7 @@ function displayResultsFromJSON(result) {
       var tempString = '<tr data-toggle="collapse" data-target="#accordion' + i + 
                       '" class="clickable" id="table-row' + i +
                       '" data-yelpid="' + result[i][11] + '"><td><a href="' +
-                      result[i][8] + '">'+ result[i][0] +
+                      result[i][8] + '" target="_blank">'+ result[i][0] +
                       '</a></td><td>' + result[i][3] +
                       ' ' + result[i][4] +
                       '<br>' + result[i][5] +
