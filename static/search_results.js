@@ -178,6 +178,7 @@ function submitCoords(position) {
 // get HTML5 geolocation and pass to submitCoords function
 function getLocation(evt) {
   evt.preventDefault();
+  $('#search-results').empty();
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(submitCoords);
@@ -191,6 +192,7 @@ $('#coords-search').on('click', getLocation);
 // Submit address to server and recenter map on that location.
 function submitAddress(evt) {
   evt.preventDefault();
+  $('#search-results').empty();
   // get the address & search range values entered into text fields by user
   var street = $('#street').val();
   var city = $('#city').val();
