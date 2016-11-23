@@ -122,7 +122,7 @@ function displayResultsFromJSON(result) {
   // userInfoWindow
   } else {
     map.setCenter(userInfoWindow.getPosition());
-    divContents.push('<h3>No results found.</h3>');
+    divContents.push('<h3>No results found.</h3><p> Please expand your search range.</p>');
   }
   
   // update the contents on main page of div id="search-results"
