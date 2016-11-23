@@ -143,6 +143,10 @@ function displayResultsFromJSON(result) {
       });
     // add event listener for click on email & phone icons
     $('.send-mail').click(getEmail);
+    // $('.send-mail').click(function (evt) {
+    //   evt.stopPropagation();
+    //   getEmail();
+    //   });
     $('.send-sms').click(getPhone);
   });
 }
