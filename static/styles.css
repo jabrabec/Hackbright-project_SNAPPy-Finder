@@ -1,6 +1,8 @@
 #map {
 height: 600px;
-/*width: 600px;*/
+}
+#search-results {
+height: 600px;
 }
 .preview-img {
 height: 100px;

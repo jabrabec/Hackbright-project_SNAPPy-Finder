@@ -67,12 +67,14 @@ function displayResultsFromJSON(result) {
                       '</td><td><img class="preview-img" src="' + result[i][9] + 
                       '"></td>' + 
                       '<td id="td-' + result[i][11] +
-                      '"><a href="#" ><img src="static/img/email_icon.png"' +
+                      '"><a href="#" title="Send by email"><img' +
+                      ' src="static/img/email_icon.png"' +
                       'class="icons send-mail" data-yelpid="' + result[i][11] +
-                      '"></a><a href="#" ><img src="static/img/mobile_message-512.png"' +
+                      '"></a><a href="#" title="Send by' +
+                      ' SMS"><img src="static/img/mobile_message-512.png"' +
                       'class="icons send-sms" data-yelpid="' + result[i][11] +
-                      '"></a></td></tr><tr id="row-'+ result[i][11] +
-                      '" class="review-row hidden-row">' +
+                      '"></a></td></tr><tr id="row-'+
+                      result[i][11] + '" class="review-row hidden-row">' +
                       '<td colspan="5"><div id="accordion' + i +
                       '" class="collapse"><div id="'+ result[i][11] +
                       '"></div></div></td></tr>';
