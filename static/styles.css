@@ -27,6 +27,15 @@ height: 20px;
 .hidden-row {
   display: none;
 }
+
+#search-by-address {
+  display: none;
+}
+#hidden-loading-icon {
+  display: none;
+}
+
+/* styling for yelp star sprite */
 .stars {
   background: transparent url(img/stars_map.png) no-repeat;
 }
@@ -48,7 +57,3 @@ height: 20px;
 .r4 { background-position: 0px -126px; }
 .r4-5 { background-position: 0px -144px; }
 .r5 { background-position: 0px -162px; }
-
-#hidden-loading-icon {
-  display: none;
-}
