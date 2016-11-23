@@ -29,10 +29,10 @@
   <div id="search-by-address">
     <h4>Search near a specific address:</h4>
     <form action="#" method="GET" id="address-entry">
-      Street: <input type="text" id="street" required>
-      City: <input type="text" id="city" required>
-      State*: <input type="text" id="state" maxlength="2" value="CA" disabled required>
-      Search range:
+      <div>Street: <input type="text" id="street" required></div>
+      <div>City: <input type="text" id="city" required></div>
+      <div>State*: <input type="text" id="state" maxlength="2" value="CA" disabled required></div>
+      <div>Search range:
         <select name="search-range" id="addr-search-range" required>
           <option value="0.1">0.1 miles</option>
           <option value="0.2">0.2 miles</option>
@@ -44,6 +44,7 @@
           <option value="10">10 miles</option>
           <option value="25">25 miles</option>
         </select>
+      </div>
       <input type="submit" value="Search!" id="addr-search">
     </form>
     <span id="disclaimer">*Search is currently only available in California.</span>
