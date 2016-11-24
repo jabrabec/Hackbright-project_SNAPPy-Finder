@@ -36,6 +36,9 @@ height: 20px;
 #hidden-loading-icon {
   display: none;
 }
+td {
+  width: 20%
+}
 
 /* styling for yelp star sprite */
 .stars {
