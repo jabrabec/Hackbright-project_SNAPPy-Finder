@@ -2,7 +2,10 @@
 
 {% block content %}
 
-<div class="col-xs-12">
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-xs-12 col-md-6 col-md-offset-3">
   <h2>Find a retailer near you:</h2>
   <div id="search-by-coords">
     <h4>Automatically search for nearby locations:</h4>
@@ -52,14 +55,20 @@
   </div>
   </div>
 </div>
+</div>
+</div>
+
 
 <div class="container-fluid">
+<div class="row">
   <div id='map' class="col-xs-12 col-md-6">
   </div>
 
   <div id="search-results" class="col-xs-12 col-md-6">
   </div>
+  </div>
 </div>
+
 
 <div id="hidden-loading-icon"><img src="static/img/ajax-loader.gif"></div>
 
