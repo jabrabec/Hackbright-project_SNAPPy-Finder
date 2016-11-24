@@ -41,7 +41,8 @@ function displayResultsFromJSON(result) {
   if (result[0]) {
     // create header row
     var headerRow = '<h3>Results:</h3><p>Click on any row for more ' +
-                    'information.</p><table class="table-bordered"><thead>' +
+                    'information.</p><table class="table-bordered table-hover">' +
+                    '<thead>' +
                     '<tr>' +
                     '<th>Name</th>' +
                     '<th>Address</th>' +
