@@ -46,7 +46,8 @@ function displayResultsFromJSON(result) {
                     '<tr>' +
                     '<th>Name</th>' +
                     '<th>Address</th>' +
-                    '<th>Distance (mi)</th>' +
+                    '<th>Distance (mi) <span class="glyphicon' +
+                    ' glyphicon-arrow-down"></span></th>' +
                     '<th>Preview img</th>' +
                     '<th>user actions</th>' +
                     '</tr></thead><tbody>';
