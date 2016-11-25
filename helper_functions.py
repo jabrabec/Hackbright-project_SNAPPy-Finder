@@ -29,9 +29,9 @@ def sql_query_by_coords(latitude, longitude, search_range, limit_to=20, offset_b
     # turn results into a list of lists instead of a list of tuples
     results_list = [list(item) for item in results]
 
-    # round the returned distance calculation to 3 decimal places only
+    # round the returned distance calculation to 2 decimal places only
     for item in results_list:
-        item[10] = round(item[10], 3)
+        item[10] = round(item[10], 2)
 
     return results_list
 
