@@ -1,11 +1,15 @@
-/* Styling for navbar spacing*/
+/* Padding styling for navbar spacing */
 body {
   padding-top: 60px;
+  background-image: url(/static/img/paper.png);
 }
 @media (max-width: 979px) {
   body {
     padding-top: 0px;
   }
+}
+body {
+  
 }
 #map {
 height: 600px;
