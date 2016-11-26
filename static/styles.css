@@ -8,6 +8,7 @@ height: 600px;
 }
 #search-results {
 height: 600px;
+/*background-color: #dfdcd8;*/
 }
 .preview-img {
 height: 100px;
@@ -44,10 +45,13 @@ height: 20px;
 td {
   width: 20%
 }
+#landing-coords-btn, #landing-addr-btn {
+  font-size: 18px;
+}
 
 /* styling for yelp star sprite */
 .stars {
-  background: transparent url(img/stars_map.png) no-repeat;
+  /*background: transparent url(img/stars_map.png) no-repeat;*/
 }
 .rating {
   font-size: 0;

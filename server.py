@@ -54,6 +54,13 @@ def homepage():
     return render_template('homepage.html', key=os.environ['GMAPS_API_KEY'])
 
 
+@app.route('/index')
+def index():
+    """Show homepage."""
+
+    return render_template('index.html')
+
+
 @app.route('/search-coords.json', methods=['GET'])
 def search_retailers_by_coords_json():
     """Search DB for a list of results given lat, long, and range by user."""

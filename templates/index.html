@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<style type="text/css">
+body {
+  background-image: url(/static/img/fruits-1779695_1920_blur.png);
+}
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-xs-12 col-md-8 col-md-offset-2">
+<div class="bs-component">
+<div class="jumbotron">
+  <h1>Welcome to SNAPPy Finder</h1>
+  <p>SNAPPy Finder is a tool designed to make it easier for you to find
+    information about nearby retailers that accept <a href="http://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program-snap" target="_blank">SNAP</a>/<a href="https://www.ebt.ca.gov/caebtclient/reciplogin_client.jsp" target="_blank">EBT</a> as a form of payment.
+    To get started, please pick one of the following options:</p>
+</div>
+<div class="row">
+<div class="col-xs-12 col-md-6 col-md-offset-3">
+<a href="" class="btn btn-default btn-lg btn-block btn-primary" id="landing-coords-btn">Find my location for me</a>
+<a href="" class="btn btn-default btn-lg btn-block btn-primary" id="landing-addr-btn">Let me search near a specific address</a>
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+<script type="text/javascript" src="static/misc_listeners.js"></script>
+
+{% endblock %}
