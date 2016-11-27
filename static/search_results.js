@@ -40,8 +40,9 @@ function displayResultsFromJSON(result) {
   // perform the following only if 'results' has content:
   if (result[0]) {
     // create header row
-    var headerRow = '<h3>Results:</h3><p>Click on any row for more ' +
-                    'information.</p><table class="table-bordered table-hover">' +
+    var headerRow = '<div class="well bs-component"><h3>Results:</h3><p>Click' +
+                    ' on any row for more information.</p><table' +
+                    ' class="table-bordered table-hover">' +
                     '<thead>' +
                     '<tr>' +
                     '<th>Name</th>' +
@@ -108,7 +109,7 @@ function displayResultsFromJSON(result) {
       markers.push(marker);
     }
     // finalize table tag
-    divContents.push('</tbody></table>');
+    divContents.push('</tbody></table></div>');
     // concatenate all results in divContents into a single string
     divContents = divContents.join('');
     
@@ -126,7 +127,8 @@ function displayResultsFromJSON(result) {
   // userInfoWindow
   } else {
     map.setCenter(userInfoWindow.getPosition());
-    divContents.push('<h3>No results found.</h3><p> Please expand your search range.</p>');
+    divContents.push('<div class="well bs-component"><h3>No results found.' +
+                     '</h3><p> Please expand your search range.</p></div>');
   }
   
   // update the contents on main page of div id="search-results"
