@@ -40,7 +40,7 @@ function displayResultsFromJSON(result) {
   // perform the following only if 'results' has content:
   if (result[0]) {
     // create header row
-    var headerRow = '<div class="well bs-component"><h3>Results:</h3><p>Click' +
+    var headerRow = '<div class="bs-component"><h3>Results:</h3><p>Click' +
                     ' on any row for more information.</p><table' +
                     ' class="table-bordered table-hover">' +
                     '<thead>' +
