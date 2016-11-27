@@ -47,6 +47,9 @@ td {
 #landing-coords-btn, #landing-addr-btn {
   font-size: 18px;
 }
+tbody tr:hover {
+  background-color: white;
+}
 
 /* styling for yelp star sprite */
 .stars {
