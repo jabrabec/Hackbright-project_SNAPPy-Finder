@@ -185,10 +185,14 @@ function submitCoords(position) {
   $.get('/search-coords.json', params, displayResultsFromJSON);
 }
 
-// get HTML5 geolocation and pass to submitCoords function
+// get HTML5 geolocation and pass to submitCoords function.
+// empty the search-results div in case of prior search results.
+// trigger bootstrap column realignments for display of returned results.
 function getLocation(evt) {
   evt.preventDefault();
   $('#search-results').empty();
+  $('#search-results').css('display', 'inline');
+  $('#map').removeClass('col-md-offset-3');
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(submitCoords);
@@ -200,9 +204,13 @@ $('#coords-search').on('click', getLocation);
 
 
 // Submit address to server and recenter map on that location.
+// empty the search-results div in case of prior search results.
+// trigger bootstrap column realignments for display of returned results.
 function submitAddress(evt) {
   evt.preventDefault();
   $('#search-results').empty();
+  $('#search-results').css('display', 'inline');
+  $('#map').removeClass('col-md-offset-3');
   // get the address & search range values entered into text fields by user
   var street = $('#street').val();
   var city = $('#city').val();

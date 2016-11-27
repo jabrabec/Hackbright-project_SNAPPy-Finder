@@ -9,6 +9,7 @@ height: 600px;
 #search-results {
 height: 600px;
 overflow: scroll;
+display: none;
 }
 .preview-img {
 height: 100px;
