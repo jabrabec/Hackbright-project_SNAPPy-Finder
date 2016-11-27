@@ -47,16 +47,16 @@ class MyJSONEncoder(flask.json.JSONEncoder):
 app.json_encoder = MyJSONEncoder
 
 
-@app.route('/')
-def homepage():
-    """Show homepage."""
+@app.route('/search')
+def search_page():
+    """Show main search page."""
 
     return render_template('homepage.html', key=os.environ['GMAPS_API_KEY'])
 
 
-@app.route('/index')
+@app.route('/')
 def index():
-    """Show homepage."""
+    """Show landing page."""
 
     return render_template('index.html')
 
