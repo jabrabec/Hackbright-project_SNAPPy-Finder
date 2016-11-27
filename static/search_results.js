@@ -42,7 +42,7 @@ function displayResultsFromJSON(result) {
     // create header row
     var headerRow = '<div class="bs-component"><h3>Results:</h3><p>Click' +
                     ' on any row for more information.</p><table' +
-                    ' class="col-xs-12 table-bordered">' +
+                    ' class="col-xs-12 table">' +
                     '<thead>' +
                     '<tr>' +
                     '<th>Name</th>' +
