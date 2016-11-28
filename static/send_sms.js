@@ -5,7 +5,7 @@ function getPhone(evt) {
     $('#td-' + yelpID).append('<div id="sms-form-' + yelpID + '"><form action="#" \
                                 method="POST"><input type="number" \
                                 id="sms-' + yelpID + '" \
-                                placeholder="1##########" maxlength="11" \
+                                placeholder="e.g. 14158872215" maxlength="11" \
                                 required><input type="submit" value="Send" \
                                 id="submit-sms-' + yelpID + '"></form><span \
                                 class="incorrect-input">Please input exactly 11 \
