@@ -58,7 +58,7 @@ function displayResultsFromJSON(result) {
     for (var i in result) {
       // create a temporary holding string to concatenate html for a single row
       var tempString = '<tr data-toggle="collapse" data-target="#accordion' + i + 
-                      '" class="clickable" id="table-row' + i +
+                      '" class="clickable" id="tablerow-' + result[i][11] +
                       '" data-yelpid="' + result[i][11] + '"><td><a href="' +
                       result[i][8] + '" target="_blank">'+ result[i][0] +
                       '</a></td><td>' + result[i][3] +
@@ -100,9 +100,15 @@ function displayResultsFromJSON(result) {
           map: map,
           title: result[i][0]
         });
+      var yelpID = result[i][11];
+      // var targetScrollRow = $('#tablerow-' + result[i][11])[0];
+      // $(marker).click( function() {
+      //   targetScrollRow.scrollIntoView()
+      // });
+
       // Inside the loop we call bindInfoWindow passing it the marker,
       // map, infoWindow and contentString
-      bindInfoWindow(marker, map, infoWindow, contentString);
+      bindInfoWindow(marker, map, infoWindow, contentString, yelpID);
       // add this respective marker & infowindow to holding array to enable
       // clearing them later
       infoWindowArray.push(infoWindow);
@@ -158,13 +164,15 @@ function displayResultsFromJSON(result) {
 // When a marker is clicked it closes any currently open infowindows
 // Sets the content for the new marker with the content passed through
 // then it open the infoWindow with the new content on the marker that's clicked
-function bindInfoWindow(marker, map, infoWindow, contentString) {
+function bindInfoWindow(marker, map, infoWindow, contentString, yelpID) {
       google.maps.event.addListener(marker, 'click', function () {
         for (var i in infoWindowArray) {
           infoWindowArray[i].close();
           }
-          infoWindow.setContent(contentString);
-          infoWindow.open(map, marker);
+        infoWindow.setContent(contentString);
+        infoWindow.open(map, marker);
+        var targetScrollRow = document.getElementById('tablerow-' + yelpID);
+        targetScrollRow.scrollIntoView();
       });
   }
 
