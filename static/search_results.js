@@ -60,13 +60,13 @@ function displayResultsFromJSON(result) {
                       '" class="clickable" id="tablerow-' + result[i][11] +
                       '" data-yelpid="' + result[i][11] + '"><td><a href="' +
                       result[i][8] + '" target="_blank">'+ result[i][0] +
-                      '<div><img class="preview-img" src="' + result[i][9] + 
+                      '<div><img class="preview-img" src="' + result[i][9] +
                       '"></div></a></td><td>' + result[i][3] +
                       ' ' + result[i][4] +
                       '<br>' + result[i][5] +
                       ', ' + result[i][6] +
                       ' ' + result[i][7] +
-                      '</td><td>' + result[i][10] + '</td>' + 
+                      '</td><td>' + result[i][10] + '</td>' +
                       '<td id="td-' + result[i][11] + '" class="user-actions">' +
                       '<a href="#" title="Send by email"><img' +
                       ' src="static/img/email_icon.png"' +
