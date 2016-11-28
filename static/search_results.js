@@ -137,7 +137,7 @@ function displayResultsFromJSON(result) {
   // clicked
   $(document).ready(function() {
     $('tbody tr').click(function() {
-    var yelpID = $(this).data()['yelpid'];
+      var yelpID = $(this).data()['yelpid'];
       if( !$.trim( $('#' + yelpID).html() ).length ) {
         $("#row-" + yelpID).removeClass("hidden-row");
         $("#" + yelpID).html('<div>Loading...<img src="static/img/ajax-loader.gif"></div>');
