@@ -2,7 +2,7 @@ function getEmail(evt) {
     evt.preventDefault();
 
     var yelpID = $(this).data()['yelpid'];
-    $('#td-' + yelpID).append('<div id="email-form' + yelpID + '"><form action="#" \
+    $('#td-' + yelpID).append('<div id="email-form-' + yelpID + '"><form action="#" \
                                 method="POST"><input type="text" id="email' + yelpID + '" \
                                 placeholder="email@domain.com" required><input \
                                 type="submit" value="Send" \
@@ -18,9 +18,9 @@ function sendEmail(yelpID) {
     var recipient = $('#email' + yelpID).val();
     var params = {'yelpID': yelpID, 'recipient': recipient};
     $.post('/send-mail', params, processMailResponse);
-    $('#email-form' + yelpID).html("Sending message...");
+    $('#email-form-' + yelpID).html("Sending message...");
 }
 
 function processMailResponse(result) {
-    $('#email-form' + result.yelpID).html(result.success_result).fadeOut(3000);
+    $('#email-form-' + result.yelpID).html(result.success_result).fadeOut(3000);
 }

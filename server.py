@@ -122,8 +122,9 @@ def send_sms_to_user():
     https://m.yelp.com/biz/%s''' % (yelp_bus_id)
 
     success_result = send_sms(recipient, body)
+    results_dict = {'yelpID': yelp_bus_id, 'success_result': success_result}
 
-    return success_result
+    return jsonify(results_dict)
 
 
 @app.route('/search-yelp-reviews.json', methods=['GET'])
