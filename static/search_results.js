@@ -69,8 +69,8 @@ function displayResultsFromJSON(result) {
                       '</td><td>' + result[i][10] + 
                       '</td><td><img class="preview-img" src="' + result[i][9] + 
                       '"></td>' + 
-                      '<td id="td-' + result[i][11] +
-                      '"><a href="#" title="Send by email"><img' +
+                      '<td id="td-' + result[i][11] + '" class="user-actions">' +
+                      '<a href="#" title="Send by email"><img' +
                       ' src="static/img/email_icon.png"' +
                       'class="icons send-mail" data-yelpid="' + result[i][11] +
                       '"></a><a href="#" title="Send by' +
@@ -137,7 +137,7 @@ function displayResultsFromJSON(result) {
   // clicked
   $(document).ready(function() {
     $('tbody tr').click(function() {
-      var yelpID = $(this).data()['yelpid'];
+    var yelpID = $(this).data()['yelpid'];
       if( !$.trim( $('#' + yelpID).html() ).length ) {
         $("#row-" + yelpID).removeClass("hidden-row");
         $("#" + yelpID).html('<div>Loading...<img src="static/img/ajax-loader.gif"></div>');
@@ -145,12 +145,11 @@ function displayResultsFromJSON(result) {
         $.get('/search-yelp-reviews.json', params, displayYelpReviews);
         }
       });
+    $('td.user-actions').click(function (evt) {
+      evt.stopPropagation();
+    });
     // add event listener for click on email & phone icons
     $('.send-mail').click(getEmail);
-    // $('.send-mail').click(function (evt) {
-    //   evt.stopPropagation();
-    //   getEmail();
-    //   });
     $('.send-sms').click(getPhone);
   });
 }
