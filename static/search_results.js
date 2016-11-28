@@ -49,8 +49,7 @@ function displayResultsFromJSON(result) {
                     '<th>Address</th>' +
                     '<th>Distance (mi) <span class="glyphicon' +
                     ' glyphicon-arrow-down"></span></th>' +
-                    '<th>Preview img</th>' +
-                    '<th>user actions</th>' +
+                    '<th>Send me this listing!</th>' +
                     '</tr></thead><tbody>';
     // add header row to divContents holding array
     divContents.push(headerRow);
@@ -61,14 +60,13 @@ function displayResultsFromJSON(result) {
                       '" class="clickable" id="tablerow-' + result[i][11] +
                       '" data-yelpid="' + result[i][11] + '"><td><a href="' +
                       result[i][8] + '" target="_blank">'+ result[i][0] +
-                      '</a></td><td>' + result[i][3] +
+                      '<div><img class="preview-img" src="' + result[i][9] + 
+                      '"></div></a></td><td>' + result[i][3] +
                       ' ' + result[i][4] +
                       '<br>' + result[i][5] +
                       ', ' + result[i][6] +
                       ' ' + result[i][7] +
-                      '</td><td>' + result[i][10] + 
-                      '</td><td><img class="preview-img" src="' + result[i][9] + 
-                      '"></td>' + 
+                      '</td><td>' + result[i][10] + '</td>' + 
                       '<td id="td-' + result[i][11] + '" class="user-actions">' +
                       '<a href="#" title="Send by email"><img' +
                       ' src="static/img/email_icon.png"' +
@@ -78,7 +76,7 @@ function displayResultsFromJSON(result) {
                       'class="icons send-sms" data-yelpid="' + result[i][11] +
                       '"></a></td></tr><tr id="row-'+
                       result[i][11] + '" class="review-row hidden-row">' +
-                      '<td colspan="5"><div id="accordion' + i +
+                      '<td colspan="4"><div id="accordion' + i +
                       '" class="collapse"><div id="'+ result[i][11] +
                       '"></div></div></td></tr>';
       // add this row to the divContents holding array
