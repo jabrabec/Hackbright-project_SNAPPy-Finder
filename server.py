@@ -138,6 +138,13 @@ def search_yelp_reviews_by_id():
     return jsonify(reviews)
 
 
+@app.route('/about')
+def about():
+    """Show about page."""
+
+    return render_template('about.html')
+
+
 if __name__ == "__main__":
     # debug=True allows for use of DebugToolbarExtension downstream
     app.debug = True
