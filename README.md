@@ -9,9 +9,9 @@ perform the following:
 	4. IN PROGRESS: Send search results to their mobile phone and/or email.
 
 Basic architecture:
-PostgreSQL DB ('snap') <--> server.py (Python [Flask/SQL Alchemy], Google Maps
-APIs, Yelp Fusion API) <--> client browser (Javascript [JQuery/AJAX, Google Maps
-APIs])
+PostgreSQL DB ('snap') <-->
+server.py (Python [Flask/SQL Alchemy], Google Maps APIs, Yelp Fusion API) <-->
+client browser (Javascript [JQuery/AJAX, Google Maps APIs])
 
 
 **REQUIREMENTS**
