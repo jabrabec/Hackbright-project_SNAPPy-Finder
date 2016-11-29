@@ -99,10 +99,6 @@ function displayResultsFromJSON(result) {
           title: result[i][0]
         });
       var yelpID = result[i][11];
-      // var targetScrollRow = $('#tablerow-' + result[i][11])[0];
-      // $(marker).click( function() {
-      //   targetScrollRow.scrollIntoView()
-      // });
 
       // Inside the loop we call bindInfoWindow passing it the marker,
       // map, infoWindow and contentString
