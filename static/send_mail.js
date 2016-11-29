@@ -24,7 +24,6 @@ function getEmail(evt) {
 }
 
 function sendEmail(yelpID, recipient) {
-    // var recipient = $('#email' + yelpID).val();
     var params = {'yelpID': yelpID, 'recipient': recipient};
     $.post('/send-mail', params, processMailResponse);
     $('#email-form-' + yelpID).html("Sending message...");
@@ -32,4 +31,12 @@ function sendEmail(yelpID, recipient) {
 
 function processMailResponse(result) {
     $('#email-form-' + result.yelpID).html(result.success_result).fadeOut(3000);
+    var container = document.getElementById('email-form-' + result.yelpID);
+    setTimeout(function(){
+        removeFormDiv(container)
+    }, 4000);
+}
+
+function removeFormDiv(container){
+    container.parentNode.removeChild(container);
 }

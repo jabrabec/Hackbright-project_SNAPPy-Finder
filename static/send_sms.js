@@ -31,4 +31,10 @@ function sendSMS(yelpID, recipient) {
 
 function processSMSResponse(result) {
     $('#sms-form-' + result.yelpID).html(result.success_result).fadeOut(3000);
+    var container = document.getElementById('sms-form-' + result.yelpID);
+    setTimeout(function(){
+        removeFormDiv(container)
+    }, 4000);
 }
+
+// removeFormDiv() is stored in send_mail.js file
