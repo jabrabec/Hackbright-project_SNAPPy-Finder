@@ -26,8 +26,8 @@ System must have the following components available in order to run this package
 
 PostgreSQL database should be populated using the provided 'data/snap_db.sql'
 file:
-  `$ createdb snap`
-  `$ psql snap < data/snap_db.sql`
+ `$ createdb snap`
+ `$ psql snap < data/snap_db.sql`
 
 
 **USAGE INSTRUCTIONS**
