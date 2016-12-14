@@ -37,6 +37,7 @@ Server-side:
  1.	Set up and activate a virtual environment:
 
 	`$ virtualenv env`
+
 	`$ source env/bin/activate`
 
  2. pip install from requirements.txt:
