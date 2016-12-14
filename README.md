@@ -27,17 +27,16 @@ System must have the following components available in order to run this package
 PostgreSQL database should be populated using the provided 'data/snap_db.sql'
 file:
 
- `$ createdb snap`
- 
- `$ psql snap < data/snap_db.sql`
+	`$ createdb snap` 
+	`$ psql snap < data/snap_db.sql`
 
 
 **USAGE INSTRUCTIONS**
 
 Server-side:
  1. Set up and activate a virtual environment:
-  `$ virtualenv env`
-  `$ source env/bin/activate`
+	`$ virtualenv env`
+	`$ source env/bin/activate`
  2. pip install from requirements.txt:
   `(env) $ pip freeze -r requirements.txt`
  3. Source a secrets.sh file (not provided in this repository) containing:
