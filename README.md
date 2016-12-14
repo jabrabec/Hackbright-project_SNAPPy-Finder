@@ -34,21 +34,28 @@ file:
 **USAGE INSTRUCTIONS**
 
 Server-side:
- 1. Set up and activate a virtual environment:
+ 1.	Set up and activate a virtual environment:
+
 	`$ virtualenv env`
 	`$ source env/bin/activate`
+
  2. pip install from requirements.txt:
-  `(env) $ pip freeze -r requirements.txt`
+
+	`(env) $ pip freeze -r requirements.txt`
+
  3. Source a secrets.sh file (not provided in this repository) containing:
   1. GMAPS_API_KEY
   2. YELP_APP_ID
   3. YELP_APP_SECRET
   4. FLASK_KEY (only required if using sessions and the Flask debug toolbar)
   5. MAIL_PASSWORD
-  `(env) $ source secrets.sh`
+	`(env) $ source secrets.sh`
+
 4. Run the server.py file with your desired host & port values (default is set
 to http://0.0.0.0:5000/ for running on virtual machines):
+
 	`(env) $ python server.py`
+
 
 Client-side:
  1. Load the main webpage (e.g. http://localhost:5000/):
