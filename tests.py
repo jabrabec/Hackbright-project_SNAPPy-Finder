@@ -39,6 +39,7 @@ class FlaskTestsBasic(unittest.TestCase):
                                                       'body': body})
 
         self.assertIn('Successfully sent mail to %s\n' % (recipient), result.data)
+        self.assertNotIn('Failed to send mail to %s\n' % (recipient), result.data)
 
     def test_sms(self):
         '''Test that send_sms route works correctly'''
