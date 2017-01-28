@@ -53,6 +53,20 @@ class FlaskTestsBasic(unittest.TestCase):
         self.assertIn('Successfully sent mail to %s' % (recipient), result.data)
         self.assertNotIn('Failed to send mail to %s' % (recipient), result.data)
 
+    def test_mail_failure(self):
+        '''Test that send_mail route handles failures'''
+
+        recipient = 'snappyfinder'
+        subject = 'testing flask mail route'
+        body = 'testing flask mail route'
+
+        result = self.client.post('/send-mail', data={'recipient': recipient,
+                                                      'subject': subject,
+                                                      'body': body})
+
+        self.assertIn('Failed to send mail to %s' % (recipient), result.data)
+        self.assertNotIn('Successfully sent mail to %s' % (recipient), result.data)
+
     def test_sms(self):
         '''Test that send_sms route works correctly'''
 
