@@ -14,10 +14,16 @@ class FlaskTestsBasic(unittest.TestCase):
         app.config['TESTING'] = True
 
     def test_index(self):
-        '''Test that homepage displays correctly.'''
+        '''Test that index displays correctly.'''
 
         result = self.client.get('/')
         self.assertIn('<h1>Welcome to SNAPPy Finder</h1>', result.data)
+
+    def test_search_page(self):
+        '''Test that search page displays correctly.'''
+
+        result = self.client.get('/search')
+        self.assertIn('<h4>Search for nearby locations automatically:</h4>', result.data)
 
     def test_yelp(self):
         '''Test that search_yelp_reviews_by_id returns JSON correctly.'''
