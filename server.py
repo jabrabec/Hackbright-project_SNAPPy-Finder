@@ -147,10 +147,10 @@ def about():
 
 if __name__ == "__main__":
     # debug=True allows for use of DebugToolbarExtension downstream
-    app.debug = True
+    # app.debug = True
 
     connect_to_db(app)
 
     # Use the DebugToolbar
-    DebugToolbarExtension(app)
+    # DebugToolbarExtension(app)
     app.run(host="0.0.0.0", port=5000)
