@@ -17,7 +17,7 @@ class FlaskTestsBasic(unittest.TestCase):
         '''Test that homepage displays correctly.'''
 
         result = self.client.get('/')
-        self.assertIn('<h2>Find a retailer near you:</h2>', result.data)
+        self.assertIn('<h1>Welcome to SNAPPy Finder</h1>', result.data)
 
     def test_yelp(self):
         '''Test that search_yelp_reviews_by_id returns JSON correctly.'''
@@ -38,8 +38,8 @@ class FlaskTestsBasic(unittest.TestCase):
                                                       'subject': subject,
                                                       'body': body})
 
-        self.assertIn('Successfully sent mail to %s\n' % (recipient), result.data)
-        self.assertNotIn('Failed to send mail to %s\n' % (recipient), result.data)
+        self.assertIn('Successfully sent mail to %s' % (recipient), result.data)
+        self.assertNotIn('Failed to send mail to %s' % (recipient), result.data)
 
     def test_sms(self):
         '''Test that send_sms route works correctly'''
