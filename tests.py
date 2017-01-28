@@ -25,6 +25,12 @@ class FlaskTestsBasic(unittest.TestCase):
         result = self.client.get('/search')
         self.assertIn('<h4>Search for nearby locations automatically:</h4>', result.data)
 
+    def test_about(self):
+        '''Test that about page displays correctly.'''
+
+        result = self.client.get('/about')
+        self.assertIn('<p>About the developer: <script src="//platform.linkedin.com/in.js"', result.data)
+
     def test_yelp(self):
         '''Test that search_yelp_reviews_by_id returns JSON correctly.'''
 
