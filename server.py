@@ -24,6 +24,10 @@ import googlemaps
 
 app = Flask(__name__)
 
+from flask_sslify import SSLify
+if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
+    sslify = SSLify(app)
+
 # Required to use Flask sessions and the debug toolbar
 app.secret_key = os.environ['FLASK_KEY']
 
@@ -153,6 +157,7 @@ def error():
 
 if __name__ == "__main__":
     # debug=True allows for use of DebugToolbarExtension downstream
+    # app.debug must = False to use sslify on Heroku
     # app.debug = True
 
     connect_to_db(app)
