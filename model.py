@@ -109,11 +109,11 @@ def example_data():
 ##############################################################################
 # Helper functions
 
-def connect_to_db(app, db_uri="postgresql:///snap"):
+def connect_to_db(app, db_uri=None):
     """Connect the database to our Flask app."""
 
     # live/snap db connection is set with default db_uri parameter:
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///snap'
     # disable verbose sqlalchemy version information output:
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app

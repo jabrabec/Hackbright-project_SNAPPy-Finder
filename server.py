@@ -160,7 +160,7 @@ if __name__ == "__main__":
     # app.debug must = False to use sslify on Heroku
     # app.debug = True
 
-    connect_to_db(app)
+    connect_to_db(app, os.environ.get("DATABASE_URL"))
 
     # Use the DebugToolbar
     # DebugToolbarExtension(app)
