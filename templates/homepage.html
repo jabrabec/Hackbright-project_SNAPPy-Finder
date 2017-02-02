@@ -8,7 +8,7 @@
 <div class="col-xs-12 col-md-4 col-md-offset-4">
   <h2 class="well bs-component">Find a retailer near you!</h2>
   <div class="well bs-component" id="search-by-coords">
-    <h4>Search for nearby locations automatically:</h4>
+    <h4>Search for nearby locations automatically:*</h4>
     <form action="#" method="GET" id="lat-long-entry">
       Please specify a search range:
           <select class="form-control" name="search-range" id="coords-search-range" required>
@@ -24,7 +24,7 @@
         </select>
       <button type="button" class="btn btn-primary" id="coords-search">Go!</button><br>
     </form>
-
+    <span id="disclaimer">*Search is currently only available in Northern California.</span>
     <div><button type="button" class="btn btn-info btn-xs" id="toggle-coords-search">Search by address instead</button><br>
     </div>
   </div>
