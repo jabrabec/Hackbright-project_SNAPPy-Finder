@@ -61,7 +61,7 @@ function displayResultsFromJSON(result) {
                       '" data-yelpid="' + result[i][11] + '"><td><a href="' +
                       result[i][8] + '" target="_blank">'+ result[i][0] +
                       '<div><img class="preview-img" src="' + result[i][9] +
-                      '"></div></a></td><td>' + result[i][3] +
+                      '"></a></div></td><td>' + result[i][3] +
                       ' ' + result[i][4] +
                       '<br>' + result[i][5] +
                       ', ' + result[i][6] +
