@@ -27,19 +27,20 @@ System must have the following components available in order to run this package
  7. Standard web-browser
 
 PostgreSQL database should be populated using the provided 'data/snap_db.sql'
-file:
+file:  
  `$ createdb snap`  
  `$ psql snap < data/snap_db.sql`  
  
 
+
 **USAGE INSTRUCTIONS**
 
 Server-side:
- 1. Set up and activate a virtual environment:
- `$ $ virtualenv env`  
+ 1. Set up and activate a virtual environment:  
+ `$ virtualenv env`  
  `$ source env/bin/activate`  
 
- 2. pip install from requirements.txt:
+ 2. pip install from requirements.txt:  
  `(env) $ pip freeze -r requirements.txt`  
 
  3. Source a secrets.sh file (not provided in this repository) containing:
@@ -51,9 +52,9 @@ Server-side:
   6. TWILIO_ACCOUNT_SID
   7. TWILIO_AUTH_TOKEN
   8. PRIVATE_NUMBER (phone number; only required if running tests.py)  
-	`(env) $ source secrets.sh`  
+ `(env) $ source secrets.sh`  
 
-4. Run the server.py file with your desired host & port values (default is set
+ 4. Run the server.py file with your desired host & port values (default is set
 to http://0.0.0.0:5000/ for running on virtual machines):  
  `(env) $ python server.py`  
 
@@ -74,12 +75,13 @@ Client-side:
  6. Users can send particular results to themselves via email or SMS.
 
 
-**DEMO USAGE**
+**DEMO USAGE**  
 Demo video with annotation:  
 https://vimeo.com/202998033  
 
 Live deployment:  
 https://snappyfinder.herokuapp.com/  
+
 
 
 **QUESTIONS**
