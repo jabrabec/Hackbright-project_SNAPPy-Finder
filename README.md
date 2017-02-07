@@ -1,5 +1,4 @@
-**ABOUT**
-
+##ABOUT
 SNAPPy Finder is a web application designed to help users find retailers near
 them that accept EBT/SNAP (public assistance) forms of payment. Users can
 perform the following:
@@ -14,8 +13,7 @@ server.py (Python [Flask/SQL Alchemy], Google Maps APIs, Yelp Fusion API) <-->
 client browser (Javascript [JQuery/AJAX, Google Maps APIs])
 
 
-**REQUIREMENTS**
-
+##REQUIREMENTS
 System must have the following components available in order to run this package:
  1. Python
   1. Python modules as specified in requirements.txt
@@ -32,10 +30,8 @@ file:
  `$ psql snap < data/snap_db.sql`  
  
 
-
-**USAGE INSTRUCTIONS**
-
-Server-side:
+##USAGE INSTRUCTIONS
+**Server-side**:
  1. Set up and activate a virtual environment:  
  `$ virtualenv env`  
  `$ source env/bin/activate`  
@@ -43,7 +39,9 @@ Server-side:
  2. pip install from requirements.txt:  
  `(env) $ pip freeze -r requirements.txt`  
 
- 3. Source a secrets.sh file (not provided in this repository) containing:
+ 3. Source a secrets.sh file (not provided in this repository):
+ `(env) $ source secrets.sh`  
+ secrets.sh must contain the following:
   1. GMAPS_API_KEY
   2. YELP_APP_ID
   3. YELP_APP_SECRET
@@ -52,14 +50,13 @@ Server-side:
   6. TWILIO_ACCOUNT_SID
   7. TWILIO_AUTH_TOKEN
   8. PRIVATE_NUMBER (phone number; only required if running tests.py)  
-`(env) $ source secrets.sh`  
 
  4. Run the server.py file with your desired host & port values (default is set
 to http://0.0.0.0:5000/ for running on virtual machines):  
  `(env) $ python server.py`  
 
 
-Client-side:
+**Client-side**:
  1. Load the main webpage (e.g. http://localhost:5000/):
  2. For automatic geolocation:
   1. Select a search range (default: 0.1 miles)
@@ -75,7 +72,7 @@ Client-side:
  6. Users can send particular results to themselves via email or SMS.
 
 
-**DEMO USAGE**  
+##DEMOS  
 Demo video with annotation:  
 https://vimeo.com/202998033  
 
@@ -83,8 +80,6 @@ Live deployment:
 https://snappyfinder.herokuapp.com/  
 
 
-
-**QUESTIONS**
-
+##QUESTIONS
 https://github.com/jabrabec/Hackbright-project_SNAPPy-Finder  
 jenniferbrabec@gmail.com
