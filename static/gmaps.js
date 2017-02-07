@@ -31,7 +31,8 @@
         map.setCenter(pos);
       }, function() {
         handleLocationError(true, userInfoWindow, map.getCenter());
-      });
+      },
+      {maximumAge: 600000, timeout: 5000, enableHighAccuracy: true});
     } else {
       // Browser doesn't support Geolocation
       handleLocationError(false, userInfoWindow, map.getCenter());
