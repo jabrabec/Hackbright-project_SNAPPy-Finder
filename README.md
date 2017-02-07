@@ -10,7 +10,9 @@ perform the following:
 Basic architecture:  
 PostgreSQL DB ('snap') <-->  
     server.py (Python [Flask/SQL Alchemy], Google Maps APIs, Yelp Fusion API) <-->  
-      client browser (Javascript [JQuery/AJAX, Google Maps APIs])
+      client browser (Javascript [JQuery/AJAX, Google Maps APIs])  
+
+![landing page screenshot](https://raw.githubusercontent.com/jabrabec/Hackbright-project_SNAPPy-Finder/master/static/img/landing_page.PNG)
 
 
 ##REQUIREMENTS
@@ -69,7 +71,12 @@ to http://0.0.0.0:5000/ for running on virtual machines):
  4. Results will be displayed in a table with corresponding map markers and
 	links to Yelp listings.
  5. Users can click on any table row to get additional Yelp review information for that result.
- 6. Users can send particular results to themselves via email or SMS.
+ 6. Users can send particular results to themselves via email or SMS.  
+
+Example email:  
+![email result screenshot](https://raw.githubusercontent.com/jabrabec/Hackbright-project_SNAPPy-Finder/master/static/img/email_example.PNG)  
+Example SMS:  
+![SMS result screenshot](https://raw.githubusercontent.com/jabrabec/Hackbright-project_SNAPPy-Finder/master/static/img/SMS_example.PNG)  
 
 
 ##DEMOS  
