@@ -8,9 +8,9 @@ perform the following:
  4. Send search results to their mobile phone and/or email.
 
 Basic architecture:
-PostgreSQL DB ('snap') <-->
-server.py (Python [Flask/SQL Alchemy], Google Maps APIs, Yelp Fusion API) <-->
-client browser (Javascript [JQuery/AJAX, Google Maps APIs])
+PostgreSQL DB ('snap') <-->  
+    server.py (Python [Flask/SQL Alchemy], Google Maps APIs, Yelp Fusion API) <-->  
+      client browser (Javascript [JQuery/AJAX, Google Maps APIs])
 
 
 ##REQUIREMENTS
@@ -39,7 +39,7 @@ file:
  2. pip install from requirements.txt:  
  `(env) $ pip freeze -r requirements.txt`  
 
- 3. Source a secrets.sh file (not provided in this repository):
+ 3. Source a secrets.sh file (not provided in this repository):  
  `(env) $ source secrets.sh`  
  secrets.sh must contain the following:
   1. GMAPS_API_KEY
