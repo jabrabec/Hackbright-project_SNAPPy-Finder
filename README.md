@@ -52,7 +52,7 @@ Server-side:
   6. TWILIO_ACCOUNT_SID
   7. TWILIO_AUTH_TOKEN
   8. PRIVATE_NUMBER (phone number; only required if running tests.py)  
- `(env) $ source secrets.sh`  
+`(env) $ source secrets.sh`  
 
  4. Run the server.py file with your desired host & port values (default is set
 to http://0.0.0.0:5000/ for running on virtual machines):  
