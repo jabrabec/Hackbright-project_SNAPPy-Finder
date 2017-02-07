@@ -28,19 +28,19 @@ System must have the following components available in order to run this package
 
 PostgreSQL database should be populated using the provided 'data/snap_db.sql'
 file:
- `$ createdb snap`
- `$ psql snap < data/snap_db.sql`
+ `$ createdb snap`  
+ `$ psql snap < data/snap_db.sql`  
  
 
 **USAGE INSTRUCTIONS**
 
 Server-side:
  1. Set up and activate a virtual environment:
- `$ $ virtualenv env`
- `$ source env/bin/activate`
+ `$ $ virtualenv env`  
+ `$ source env/bin/activate`  
 
  2. pip install from requirements.txt:
- `(env) $ pip freeze -r requirements.txt`
+ `(env) $ pip freeze -r requirements.txt`  
 
  3. Source a secrets.sh file (not provided in this repository) containing:
   1. GMAPS_API_KEY
@@ -50,12 +50,12 @@ Server-side:
   5. MAIL_PASSWORD
   6. TWILIO_ACCOUNT_SID
   7. TWILIO_AUTH_TOKEN
-  8. PRIVATE_NUMBER (phone number; only required if running tests.py)
-	`(env) $ source secrets.sh`
+  8. PRIVATE_NUMBER (phone number; only required if running tests.py)  
+	`(env) $ source secrets.sh`  
 
 4. Run the server.py file with your desired host & port values (default is set
-to http://0.0.0.0:5000/ for running on virtual machines):
- `(env) $ python server.py`
+to http://0.0.0.0:5000/ for running on virtual machines):  
+ `(env) $ python server.py`  
 
 
 Client-side:
@@ -63,28 +63,26 @@ Client-side:
  2. For automatic geolocation:
   1. Select a search range (default: 0.1 miles)
   2. Click "Go!"
-  3. Results will be displayed in a table with corresponding map markers and
-	links to Yelp listings.
  3. For searching a specific address:
   1. Enter values into the street and city fields (required)
     1. Search is currently only available in northern California so this field is locked.
   2. Select a search range (default: 0.1 miles)
   3. Click "Go!"
-  4. Results will be displayed in a table with corresponding map markers and
+ 4. Results will be displayed in a table with corresponding map markers and
 	links to Yelp listings.
-  5. Users can click on any table row to get additional Yelp review information for that result.
-  6. Users can send particular results to themselves via email or SMS.
+ 5. Users can click on any table row to get additional Yelp review information for that result.
+ 6. Users can send particular results to themselves via email or SMS.
 
 
 **DEMO USAGE**
+Demo video with annotation:  
+https://vimeo.com/202998033  
 
-https://snappyfinder.herokuapp.com/
-
+Live deployment:  
+https://snappyfinder.herokuapp.com/  
 
 
 **QUESTIONS**
 
-https://github.com/jabrabec/Hackbright-project_SNAPPy-Finder
+https://github.com/jabrabec/Hackbright-project_SNAPPy-Finder  
 jenniferbrabec@gmail.com
-November 2016
-
