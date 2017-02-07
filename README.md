@@ -7,7 +7,7 @@ perform the following:
  3. View Yelp information for retailers in the search results.
  4. Send search results to their mobile phone and/or email.
 
-Basic architecture:
+Basic architecture:  
 PostgreSQL DB ('snap') <-->  
     server.py (Python [Flask/SQL Alchemy], Google Maps APIs, Yelp Fusion API) <-->  
       client browser (Javascript [JQuery/AJAX, Google Maps APIs])
